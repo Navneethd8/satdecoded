@@ -1,0 +1,18 @@
+{
+  "generators": {
+    "modules": {
+      "scaffold": "sails-generate-scaffold"
+    }
+  },
+  "_generatedWith": {
+    "sails": "1.5.2",
+    "sails-generate": "2.0.6"
+  },
+  "hooks": {
+    "sockets": false,
+    "session": false
+  },
+  "paths": {
+    "public": "assets"
+  }
+}
