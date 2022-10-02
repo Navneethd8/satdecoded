@@ -1,0 +1,50 @@
+<div id="upload questions" v-cloak>
+
+    <h1>TODO: Implement this page.</h1>
+    <p>(See also <em>assets/styles/pages/quiz.less</em>, <em>assets/js/pages/quiz.page.js</em>, and <em>api/controllers/view-quiz.js</em>.)</p>
+  
+  </div>
+  <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
+  <form action="/create-question" method="post"> 
+    <textarea id="qn" name="qn" rows="4" cols="50"  required>
+       Enter Question Here!
+    </textarea>
+        
+    <h6 style="color:white;">2</h6>
+    <input id="answer1" name="answer1" required> 
+    <h6 style="color:white;">2</h6>
+    <input id="answer2"name="answer2"  required> 
+    <h6 style="color:white;">2</h6>
+    <input id="answer3"name="answer3" required> 
+    <h6 style="color:white;">2</h6>
+    <input id="answer4"name="answer4"  required>
+    <h5>Please Enter Correct Answer!</h5>
+    <input list="correct_answer" name="correct_answer"  required>
+  <datalist id="correct_answer">
+    <option value="answer1">
+    <option value="answer2">
+    <option value="answer3">
+    <option value="answer4">
+  </datalist>
+  <h5>Please Enter Correct category!</h5>
+  <input list="category" name="category"  required>
+  <datalist id="category">
+    <option value="Maths:Heart of Algebra">
+    <option value="Maths:Passport to advanced mathematics">
+    <option value="Maths:Problem solving and data analysis">
+    <option value="Maths:Additional topics in math">
+    <option value="Reading:Science">
+    <option value="Reading:History">
+    <option value="Reading:Literature">
+    <option value="Reading:Social Science">
+    <option value="Writing:argument">
+    <option value="Writing:informative">
+    <option value="Writing:narrative">
+    <option value="Writing:Grammar and effective language use">
+        
+  </datalist>
+  <h6 style="color:white;">2</h6>
+  <input type="submit">
+ 
+
+  </form>
