@@ -1,10 +1,3 @@
-<div id="quiz" v-cloak>
-
-  <h1>TODO: Implement this page.</h1>
-  <p>(See also <em>assets/styles/pages/quiz.less</em>, <em>assets/js/pages/quiz.page.js</em>, and <em>api/controllers/view-quiz.js</em>.)</p>
-
-</div>
-<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
 <!DOCTYPE html>
 <style>
     body{
@@ -14,7 +7,7 @@
 	height: 100vh;	
 }
 .panel{
-	height: 100vh;
+	height: 50vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -24,7 +17,7 @@
 	margin: 10px;
 	padding: 5px;
 	width: 80vw;
-	height: 10vh;
+	height: 40vh;
 	background-color: #c7dddf;
 	font-size: x-large;
 	text-align: center;
@@ -87,54 +80,42 @@
 
 </style>
 <html lang="en">
-  
-  <!-- <% questions.forEach(function(question) { %>
-  
-    <tr>
-    
-    <td><%- question.qn %></td>
-    <td><%- question.answer1 %></td>
-    <td><%- question.answer2 %></td>
-    <td><%- question.answer3 %></td>
-    <td><%- question.answer4 %></td>
-    <td><%- question.correct_answer %></td>
-    <td><%- question.category %></td>    
-   </tr>
-  
-  <% }); %> -->
-  
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<!-- <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %> -->
+<% questions.forEach(function(question) { %>
+   
 <body>
 	<div class="panel">
 		<div class="result">
 
 		</div>
 		<div class="question-container" id="question">
-      <td><%- question.qn %></td>
+			<%- question.qn %>
 		</div>
 		<div class="option-container">
-			<button class="option" onclick="" id="answer1" ><td><%- question.answer1 %></td>
-      </button>
+			<button class="option" onclick="" id="answer1" ><%- question.answer1 %></button>
 	
-			<button class="option" id="answer2" ><td><%- question.answer2 %></td>
-      </button>
+			<button class="option" id="answer2" ><%- question.answer2 %></button>
 	
-			<button class="option" id="answer3"><td><%- question.answer3 %></td>
-      </button>
+			<button class="option" id="answer3"><%- question.answer3 %></button>
 	
-			<button class="option" id="answer4"><td><%- question.answer4 %></td>
-      </button>
+			<button class="option" id="answer4"><%- question.answer4 %></button>
 		</div>
-		<div class="navigation">
-			<button class="evaluate" type="submit">Evaluate</button>
-			<button class="next">Next</button>
-		</div>
+        <form action=" " method="post">
+            <button class="evaluate" type="submit">Evaluate</button>
+            <form>
+                <button class="next">Next</button>
+            </form>
+        </form>
+        
+			
 	</div>
 	<script src="script.js"></script>
 </body>
-</html>
+<!-- <% question.id=question.id +1 %> -->
+  <% }); %>
+ 
