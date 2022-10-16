@@ -1,10 +1,3 @@
-<div id="quiz" v-cloak>
-
-  <h1>TODO: Implement this page.</h1>
-  <p>(See also <em>assets/styles/pages/quiz.less</em>, <em>assets/js/pages/quiz.page.js</em>, and <em>api/controllers/view-quiz.js</em>.)</p>
-
-</div>
-<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
 <!DOCTYPE html>
 <style>
     body{
@@ -87,23 +80,6 @@
 
 </style>
 <html lang="en">
-  
-  <!-- <% questions.forEach(function(question) { %>
-  
-    <tr>
-    
-    <td><%- question.qn %></td>
-    <td><%- question.answer1 %></td>
-    <td><%- question.answer2 %></td>
-    <td><%- question.answer3 %></td>
-    <td><%- question.answer4 %></td>
-    <td><%- question.correct_answer %></td>
-    <td><%- question.category %></td>    
-   </tr>
-  
-  <% }); %> -->
-  
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -115,20 +91,16 @@
 
 		</div>
 		<div class="question-container" id="question">
-      <td><%- question.qn %></td>
+			Question goes here.
 		</div>
 		<div class="option-container">
-			<button class="option" onclick="" id="answer1" ><td><%- question.answer1 %></td>
-      </button>
+			<button class="option" onclick="" id="answer1" >option1</button>
 	
-			<button class="option" id="answer2" ><td><%- question.answer2 %></td>
-      </button>
+			<button class="option" id="answer2" >option2</button>
 	
-			<button class="option" id="answer3"><td><%- question.answer3 %></td>
-      </button>
+			<button class="option" id="answer3">option3</button>
 	
-			<button class="option" id="answer4"><td><%- question.answer4 %></td>
-      </button>
+			<button class="option" id="answer4">option4</button>
 		</div>
 		<div class="navigation">
 			<button class="evaluate" type="submit">Evaluate</button>
@@ -138,3 +110,4 @@
 	<script src="script.js"></script>
 </body>
 </html>
+

@@ -1,0 +1,22 @@
+
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
+<table class='table table-hover table-condensed'>
+  <table class='table table-hover table-condensed'>
+	
+    <% questions.forEach(function(question) { %>
+  
+      <tr>
+      
+      <td><%- question.qn %></td>
+      <td><%- question.answer1 %></td>
+      <td><%- question.answer2 %></td>
+      <td><%- question.answer3 %></td>
+      <td><%- question.answer4 %></td>
+      <td><%- question.correct_answer %></td>
+      <td><%- question.category %></td>    
+     </tr>
+    
+    <% }); %>
+    
+    </table>
+  

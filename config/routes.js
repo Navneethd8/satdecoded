@@ -34,5 +34,9 @@ module.exports.routes = {
     'POST /api/v1/approve': { action: 'approve' },
     'POST /api/v1/action-2': { action: 'action-2' },
     'GET /api/v1/action-2': { action: 'action-2' },
-
+    'GET /upload_questions': { action: 'view-upload-questions' },
+    'POST /create-question': { action: 'create-question' },
+    'GET /view-question': { action: 'view-question' },
+    'GET /list': { action: 'view-list' },
+    'GET /quiziz': { action: 'view-quiziz' },
 };

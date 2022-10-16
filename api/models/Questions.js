@@ -17,7 +17,7 @@ module.exports = {
     qn_type:
    {
     type: 'string',
-    required: true,
+    required: false,
    },
    answer1:
    {
@@ -52,7 +52,7 @@ module.exports = {
    answer_description:
    {
     type: 'string',
-    required: true,
+    required: false,
    },
 
   },

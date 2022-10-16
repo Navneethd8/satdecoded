@@ -8,6 +8,17 @@
 
     <%/* If you want to discourage search engines from indexing this site, uncomment the following line: */%>
     <%/* <meta name="robots" content="noindex"> */%>
+    <head>
+      <div style="margin:0px;">
+          <class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+          <a class="navbar-brand"><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span></a>
+              <!--<a class="navbar-brand" href="/">SAT Decoded</a> -->
+          <ul class="nav navbar-nav">
+            <li><a href="/index.html">SAT Decoded</a></li>
+          </ul>
+        </div>    
+      </head>
 
 
     <!--
@@ -111,8 +122,100 @@
     <script src="/dependencies/sails.io.js"></script>
     <script src="/js/pages/approve_videos.page.js"></script>
     <script src="/js/pages/list_videos.page.js"></script>
+    <script src="/js/pages/list.page.js"></script>
     <script src="/js/pages/quiz_report.page.js"></script>
     <script src="/js/pages/quiz.page.js"></script>
+    <script src="/js/pages/quiziz.page.js"></script>
+    <script src="/js/pages/upload_questions.page.js"></script>
+    <script src="/js/pages/view.page.js"></script>
     <!--SCRIPTS END-->
   </body>
-</html>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <link rel="stylesheet" href="sidebar.css">
+
+    <html>
+      <head>
+        <title>Express HTML</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+      </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+      font-family: "Lato", sans-serif;
+    }
+    
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: rgb(0, 234, 255);
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+    
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: rgb(0, 128, 255);
+      display: block;
+      transition: 0.3s;
+    }
+    
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+    
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+    
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 30px;}
+      .sidenav a {font-size: 36px;}
+    }
+    </style>
+    
+    <body>
+    
+    <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
+       
+    </body>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="./about.html">About</a>
+      <a href="./list_syllabus.html">Syllabus</a>
+      <a href="./video_detail_page.html">View Videos</a>
+      <a href="./video_upload.html">Upload a video</a>
+      <a href="./worksheets_view.html">View Worksheets</a>
+      
+    </div>
+    
+    
+    <body>
+      
+    
+  </html>
+  
+  
