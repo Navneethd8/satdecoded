@@ -23,8 +23,10 @@
     "sails-hook-sockets": "^2.0.0",
     "sails-postgresql": "^5.0.0",
     "sails-scaffolding": "^0.1.0",
+    "sequelize-cli": "^6.5.1",
     "underscore": "^1.13.4",
-    "waterline": "^0.15.0"
+    "waterline": "^0.15.0",
+    "wkhtmltopdf": "^0.4.0"
   },
   "devDependencies": {
     "eslint": "5.16.0"

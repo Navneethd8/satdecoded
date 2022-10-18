@@ -1,4 +1,23 @@
+// import sequelize;
+function shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
 module.exports = {
+
 
 
   friendlyName: 'View quiziz',
@@ -27,30 +46,25 @@ module.exports = {
 
 
   fn: async function (inputs,exits,env) {
-     inputs.category="Maths:Heart of Algebra";
-    var count= await Questions.count({category:inputs.category,});
-
-    for(i=0;i<10;i++)
-    {
-      a=parseInt(Math.random()* count+ 1);
-      console.log(a)
-      var questions= await Questions.find({category:inputs.category,}).limit(1).skip(a);
-      
-    };
-
-  // await Questions.splice(a,)
-  //   var questions=await Questions.count().then(count => Questions.find().limit(10).skip(parseInt(Math.random() * count)))
-  // .then(questions => questions.sort(() => 0.5 - Math.random()))
-  // .then(questions => console.log(questions))
-  // .catch(sails.log.error);
-  // var questions= await Questions.find().limit(10).skip(parseInt(Math.random()* count));
-  // var questions=find;
 
     
+
+    var count= await Questions.count({category:inputs.category,});
+    var randm = Math.floor((Math.random() * count));
+    console.log(randm)
+    if(randm < 0) randm = 0;
+    
+    // var questions= await Questions.findAll().where();
+    var questions= await Questions.find({category:inputs.category,});
+    shuffle(questions)
+    // var questions=Questions.findOne({order: sequelize.random()});  
     // Respond with view.
+    console.log('After retreival',questions);
+
     return env.res.view({
       questions: questions
     });
+    
 
   }
 

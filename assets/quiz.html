@@ -50,9 +50,6 @@
 	background-color: lightskyblue;
 	
 }
-.option:hover{
-	background-color: lightgoldenrodyellow;
-}
 .navigation{
 	width: 80vw;
 	height: 10vh;
@@ -79,6 +76,12 @@
 }
 
 </style>
+
+<script>
+	function evaluate(){
+		
+	}
+</script>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -94,7 +97,7 @@
 			Question goes here.
 		</div>
 		<div class="option-container">
-			<button class="option" onclick="" id="answer1" >option1</button>
+			<button class="option" id="answer1"">option1</button>
 	
 			<button class="option" id="answer2" >option2</button>
 	
@@ -106,6 +109,9 @@
 			<button class="evaluate" type="submit">Evaluate</button>
 			<button class="next">Next</button>
 		</div>
+	</div>
+	<div class="question-container" id="Answer">
+		Answer
 	</div>
 	<script src="script.js"></script>
 </body>

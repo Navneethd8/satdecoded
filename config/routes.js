@@ -39,4 +39,5 @@ module.exports.routes = {
     'GET /view-question': { action: 'view-question' },
     'GET /list': { action: 'view-list' },
     'GET /quiziz': { action: 'view-quiziz' },
+    'POST /evaluate-quiz': { action: 'evaluate-quiz' },
 };
