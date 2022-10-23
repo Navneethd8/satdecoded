@@ -1,84 +1,4 @@
 <!DOCTYPE html>
-<style>
-    body{
-	padding: 0;
-	margin: 0;	
-	width:100vw;
-	height: 100vh;	
-}
-.panel{
-	height: 50vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-.question-container{
-	margin: 10px;
-	padding: 5px;
-	width: 80vw;
-	height: 40vh;
-	background-color: #c7dddf;
-	font-size: x-large;
-	text-align: center;
-	
-}
-.result{
-	margin: 10px;
-	padding: 5px;
-	width:80vw;
-	height: 10vh;
-	text-align: center;
-	font-size: 50px;
-	
-}
-.option-container{
-	display: flex;
-	justify-content: space-around;
-	margin: 10px;
-	padding: 5px;
-	width: 80vw;
-	height: 20vh;
-	background-color: #9eb1b3;
-		
-}
-.option{	
-	padding: 10px;
-	width: 15vw;
-	height: 10vh;
-	font-size: larger;
-	background-color: lightskyblue;
-	
-}
-.option:hover{
-	background-color: lightgoldenrodyellow;
-}
-.navigation{
-	width: 80vw;
-	height: 10vh;
-	margin: 10px;
-	padding: 5px;
-	display: flex;
-	justify-content: space-around;
-	background-color:#c7dddf;
-}
-
-.evaluate,.next{
-	width:30vw;
-	height: 8vh;
-	padding: 5px;
-	font-size: larger;
-}
-.evaluate{
-	
-	background-color: #50DBB4;
-}
-.next{
-	color: white;
-	background-color: #BF3325;
-}
-
-</style>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -97,22 +17,42 @@
 			<%- question.qn %>
 		</div>
 		<div class="option-container">
-			<button class="option" onclick="" id="answer1" ><%- question.answer1 %></button>
-	
-			<button class="option" id="answer2" ><%- question.answer2 %></button>
-	
-			<button class="option" id="answer3"><%- question.answer3 %></button>
-	
-			<button class="option" id="answer4"><%- question.answer4 %></button>
+			<input type="radio" id="answer1"><%- question.answer1 %></input>
+			<input type="radio" id="answer2" ><%- question.answer2 %></input>
+			<input type="radio" id="answer3"><%- question.answer3 %></input>
+			<input type="radio" id="answer4"><%- question.answer4 %></input>
+			console.
+			<div id="answer_status">
+
+			</div>
 		</div>
-        <form action="/evaluate-quiz" method="post">
-            <button class="evaluate" type="submit">Evaluate</button> 
-        </form>
         
 			
 	</div>
-	<script src="script.js"></script>
 </body>
-<!-- <% question.id=question.id +1 %> -->
   <% }); %>
+  
+	<button type="submit" onclick="checkAnswer()">Evaluate</button> 
+	<script>
+	function checkAnswer() 
+		{ 
+		  console.log('Begin check answer')
+		  if(document.getElementById('answer1').checked) 
+		  {
+			console.log("inc")
+			  document.getElementById('answer_status').innerHTML
+				  = 'Incorrect Answer';
+		  }
+		  else if(document.getElementById('answer2').checked)
+		   {
+			  document.getElementById('answer_status').innerHTML
+				  ='Correct Answer';
+		  }
+		  console.log('END check answer')
+		
+		};
+		</script>
+
+
+
  

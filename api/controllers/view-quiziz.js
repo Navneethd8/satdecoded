@@ -34,7 +34,10 @@ module.exports = {
   id:{
     type:'number',
     required:false,
-  }
+  },
+  // correct_answer:{
+
+  // }
   },
   exits: {
 
@@ -45,9 +48,9 @@ module.exports = {
   },
 
 
-  fn: async function (inputs,exits,env) {
-
-    
+  fn: async function (inputs,exits,env) 
+  {
+   
 
     var count= await Questions.count({category:inputs.category,});
     var randm = Math.floor((Math.random() * count));
@@ -60,13 +63,12 @@ module.exports = {
     // var questions=Questions.findOne({order: sequelize.random()});  
     // Respond with view.
     console.log('After retreival',questions);
+   
 
-    return env.res.view({
-      questions: questions
-    });
-    
+    return env.res.view({questions: questions})
+  
 
-  }
+},
 
 
-};
+}
