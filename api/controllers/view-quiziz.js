@@ -1,5 +1,3 @@
-// import sequelize;
-const puppeteer = require("puppeteer");
 
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;
@@ -18,7 +16,7 @@ function shuffle(array) {
 
   return array;
 }
-
+		
 
 module.exports = {
   // const puppeteer : require("puppeteer");
