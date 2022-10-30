@@ -23,7 +23,7 @@
 				<input type="radio" name=<%- question.id %> id=<%- question.id + '3"' %> value = <%-question.answer3%> > <%- question.answer3 %></input><br/>
 				<input type="radio" name=<%- question.id %> id=<%- question.id + '4"' %> value = <%-question.answer4%> > <%- question.answer4 %></input><br/>
 				<div id="answer_status"> </div>
-				<div id="correct_answer" hidden><%- "Correct Answer is: " + question.correct_answer %></div>
+				<div id="correct_answer" hidden><%- question[question.correct_answer] %></div>
 				<div id="answer_description" hidden><%- "Explanation: " + question.answer_description %></div>
 			</form>
 			</div>
@@ -49,7 +49,7 @@
 			var answer_status
 			var answer_description
 			for (var k=0; k < children.length; k++) {
-				if (children[k].id === "correct_answer") correct_answer = children[k];
+				if (children[k].id === "correct_answer") correct_answer = children[k].innerHTML;
 				if (children[k].id === "answer_description") answer_description = children[k];
 				if (children[k].id === "answer_status") answer_status = children[k];
 			}
