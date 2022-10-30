@@ -1,4 +1,6 @@
 // import sequelize;
+const puppeteer = require("puppeteer");
+
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;
 
@@ -16,8 +18,10 @@ function shuffle(array) {
 
   return array;
 }
-module.exports = {
 
+
+module.exports = {
+  // const puppeteer : require("puppeteer");
 
 
   friendlyName: 'View quiziz',
@@ -35,9 +39,10 @@ module.exports = {
     type:'number',
     required:false,
   },
-  // correct_answer:{
-
-  // }
+   correct_answer:{
+    type: 'string',
+    required: false,
+  }
   },
   exits: {
 
@@ -58,7 +63,7 @@ module.exports = {
     if(randm < 0) randm = 0;
     
     // var questions= await Questions.findAll().where();
-    var questions= await Questions.find({category:inputs.category,});
+    var questions= await Questions.find({category:inputs.category,correct_answer:inputs.correct_answer});
     shuffle(questions)
     // var questions=Questions.findOne({order: sequelize.random()});  
     // Respond with view.
