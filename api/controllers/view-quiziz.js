@@ -1,4 +1,3 @@
-
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;
 
@@ -16,14 +15,11 @@ function shuffle(array) {
 
   return array;
 }
-		
 
 module.exports = {
   // const puppeteer : require("puppeteer");
 
-
   friendlyName: 'View quiziz',
-
 
   description: 'Display "Quiziz" page.',
 
@@ -53,6 +49,20 @@ module.exports = {
 
   fn: async function (inputs,exits,env) 
   {
+    var doc = new jsPDF();  
+    var specialElementHandlers = {  
+    '#editor': function (element, renderer) {  
+        return true;  
+    }  
+    }; 
+    $('#submit').click(function () {  
+        doc.fromHTML($('#content').html(), 15, 15, {  
+            'width': 190,  
+                'elementHandlers': specialElementHandlers  
+        });  
+        doc.save('sample-page.pdf');  
+    }); 
+    //-------------------------------------------------------------------------------
        var count= await Questions.count({category:inputs.category,});
     var randm = Math.floor((Math.random() * count));
     console.log(randm)
@@ -66,8 +76,8 @@ module.exports = {
     console.log('After retreival',questions);
     return env.res.view({questions: questions})
   
-
 },
 
 
 }
+
