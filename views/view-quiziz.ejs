@@ -1,5 +1,4 @@
 <script>
-const puppeteer = require("puppeteer");
 </script>
 
 <!DOCTYPE html>
@@ -39,6 +38,7 @@ const puppeteer = require("puppeteer");
   <% }); %>
   
 	<script>
+		
 	function checkAnswers() 
 		{ 
 		  console.log('Begin check answer')
@@ -77,6 +77,7 @@ const puppeteer = require("puppeteer");
 		<script>
 		async function printPdf()
 		 {
+			const puppeteer = require("puppeteer");
 			console.log(puppeteer)
 			console.log("Begin print")
 			console.log(window.location.href)
