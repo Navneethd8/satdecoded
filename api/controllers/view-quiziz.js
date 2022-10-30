@@ -53,9 +53,7 @@ module.exports = {
 
   fn: async function (inputs,exits,env) 
   {
-   
-
-    var count= await Questions.count({category:inputs.category,});
+       var count= await Questions.count({category:inputs.category,});
     var randm = Math.floor((Math.random() * count));
     console.log(randm)
     if(randm < 0) randm = 0;
@@ -66,8 +64,6 @@ module.exports = {
     // var questions=Questions.findOne({order: sequelize.random()});  
     // Respond with view.
     console.log('After retreival',questions);
-   
-
     return env.res.view({questions: questions})
   
 
