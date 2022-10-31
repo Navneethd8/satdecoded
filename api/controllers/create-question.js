@@ -44,6 +44,11 @@ module.exports = {
           type: 'string',
           required: false,
           },
+        answer_description:
+          {
+          type: 'string',
+          required: false,
+          },
       
       
     },
@@ -65,6 +70,7 @@ module.exports = {
        answer3:inputs.answer3,
        answer4:inputs.answer4,
        correct_answer:inputs.correct_answer,
+       answer_description:inputs.answer_description,
       }).fetch();
     return env.res.redirect("/admin_home_page.html")
    

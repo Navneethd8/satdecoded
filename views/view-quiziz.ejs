@@ -21,10 +21,10 @@
 		</div>
 		<div class="option-container" id="answers-container">
 			<form name=<%- question.correct_answer %> id= <%- '"' + question.id + '"' %> >
-				<input type="radio" name=<%- question.id %> id=<%- question.id + '1"' %> value = <%-JSON.stringify(question.answer1)%>><%- question.answer1 %></input><br/>
-				<input type="radio" name=<%- question.id %> id=<%- question.id + '2"' %> value = <%-JSON.stringify(question.answer2)%>><%- question.answer2 %></input><br/>
-				<input type="radio" name=<%- question.id %> id=<%- question.id + '3"' %> value = <%-JSON.stringify(question.answer3)%>><%- question.answer3 %></input><br/>
-				<input type="radio" name=<%- question.id %> id=<%- question.id + '4"' %> value = <%-JSON.stringify(question.answer4)%>><%- question.answer4 %></input><br/>
+				<input type="radio" name=<%- question.id %> id=<%- question.id + '1"' %> value = <%-JSON.stringify(question.answer1)%>> <%- question.answer1 %></input><br/>
+				<input type="radio" name=<%- question.id %> id=<%- question.id + '2"' %> value = <%-JSON.stringify(question.answer2)%>> <%- question.answer2 %></input><br/>
+				<input type="radio" name=<%- question.id %> id=<%- question.id + '3"' %> value = <%-JSON.stringify(question.answer3)%>> <%- question.answer3 %></input><br/>
+				<input type="radio" name=<%- question.id %> id=<%- question.id + '4"' %> value = <%-JSON.stringify(question.answer4)%>> <%- question.answer4 %></input><br/>
 				<div id="answer_status"> </div>
 				<div id="correct_answer" hidden><%- question[question.correct_answer] %></div>
 				<div id="answer_description" hidden><%- "Explanation: " + question.answer_description %></div>
@@ -77,4 +77,4 @@
 		<script>
 		  </script>
 	<button type="submit" onclick="checkAnswers()">Evaluate</button> 
-	<button id="submit">Print Quiz</button> 
+	<button id="submit" onclick="window.print()">Print Quiz</button> 
