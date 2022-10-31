@@ -1,5 +1,4 @@
 <script>
-const puppeteer = require("puppeteer");
 </script>
 
 <!DOCTYPE html>
@@ -39,6 +38,7 @@ const puppeteer = require("puppeteer");
   <% }); %>
   
 	<script>
+		
 	function checkAnswers() 
 		{ 
 		  console.log('Begin check answer')
@@ -75,29 +75,6 @@ const puppeteer = require("puppeteer");
 		};
 		</script>
 		<script>
-		async function printPdf()
-		 {
-			console.log(puppeteer)
-			console.log("Begin print")
-			console.log(window.location.href)
-			Url=window.location.href;
-			const browser = await puppeteer.launch();
-			const page = await browser.newPage();
-			console.log(Url," THIS is the UR:L")
-			await page.goto(Url,{
-			waitUntil: "networkidle2"
-			});
-			console.log("after url")
-			await page.setViewport({ width: 1680, height: 1050 });
-			await page.pdf({
-			  path: "Evaluation.pdf",
-			  format: "A4"
-			});
-			console.log("printed")
-		  
-			await browser.close();
-			
-		  }
 		  </script>
 	<button type="submit" onclick="checkAnswers()">Evaluate</button> 
-	<button type="submit" onclick="printPdf()">Print Quiz</button> 
+	<button id="submit">Print Quiz</button> 
