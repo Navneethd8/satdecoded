@@ -49,20 +49,21 @@ module.exports = {
    console.log(" before email=approved");
    console.log(inputs)
    const user = await User.findOne({ id: inputs.user_id});
-   console.log(user.email)
-   if (!user) {
-    return env.res.redirect('/usernotfound')
- };
-     const email = {
-      to: user.email,
-      subject: "Approval of videos",
-      template: "video_approved",
+
+  //  console.log(user.email)
+  //  if (!user) {
+    return env.res.redirect('/')
+ //};
+    //  const email = {
+    //   to: user.email,
+    //   subject: "Approval of videos",
+    //   template: "video_approved",
       
-     };
-     console.log(email)
-     await sails.helpers.sendMail(email);
-      console.log("email approved sent ");
-      return env.res.redirect("/video_detail_page.html")
+    //  };
+    //  console.log(email)
+    //  await sails.helpers.sendMail(email);
+    //   console.log("email approved sent ");
+     // return env.res.redirect("/video_detail_page.html")
 
     }
     catch{

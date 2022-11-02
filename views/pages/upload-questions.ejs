@@ -6,17 +6,15 @@
   </div>
   <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
   <form action="/create-question" method="post"> 
-    <textarea id="qn" name="qn" rows="4" cols="50"  required>
-       Enter Question Here!
-    </textarea>
+    <textarea id="qn" name="qn" rows="4" cols="50" placeholder="Enter Question Here!"  required></textarea>
         
-    <h6 style="color:white;">2</h6>
+    <h5 >Answer 1</h6>
     <input id="answer1" name="answer1" required> 
-    <h6 style="color:white;">2</h6>
+    <h5 >Answer 2</h6>
     <input id="answer2"name="answer2"  required> 
-    <h6 style="color:white;">2</h6>
+    <h5 >Answer 3</h6>
     <input id="answer3"name="answer3" required> 
-    <h6 style="color:white;">2</h6>
+    <h5>Answer 4</h6>
     <input id="answer4"name="answer4"  required>
     <h5>Please Enter Correct Answer!</h5>
     <input list="correct_answer" name="correct_answer"  required>

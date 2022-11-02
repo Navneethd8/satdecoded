@@ -6,7 +6,14 @@ module.exports = {
 
   description: 'Display "List" page.',
 
-
+  inputs:{
+    category:{
+      type: 'string',
+      required: true,
+  
+    },
+    
+    },
   exits: {
 
     success: {
@@ -17,13 +24,14 @@ module.exports = {
 
 
   fn: async function (inputs,exits,env) {
-    var questions= await Questions.find({category:'Maths:Heart of Algebra'}).limit(2);
-    console.log(questions);
-    return env.res.view({
-      questions: questions
-    });
+    console.log({category:inputs.category})
+    category= inputs.category
+    console.log(category)
+    var questions= await Questions.find({category: category}).limit(10000000);
 
-   
+    console.log(questions);
+    console.log("displaying questions")
+    return env.res.view({questions: questions});  
 
   }
 

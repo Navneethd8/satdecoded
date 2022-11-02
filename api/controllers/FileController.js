@@ -84,8 +84,10 @@ module.exports = {
               //  const user = await User.findOne({ email: email});
 
               //  user_email(user.email);
-              user_email('satdecoded5@gmail.com');
-               
+              // email= await User.meta.fetch(email_id)
+              // console.log(email)
+              // user_email(email);
+               Window.alert("Your Video has been sent for approval.Once approved it will be displayed on the website")
               return res.redirect('/video_detail_page.html');
             }
           

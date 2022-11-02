@@ -9,6 +9,14 @@ module.exports = {
   description: 'Display "List videos" page.',
 
 
+  inputs:{
+    category:{
+      type: 'string',
+      required: false,
+  
+    },
+    
+    },
   exits: {
 
     success: {
