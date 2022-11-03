@@ -27,7 +27,7 @@ module.exports = {
     console.log({category:inputs.category})
     category= inputs.category
     console.log(category)
-    var questions= await Questions.find({category: category}).limit(10000000);
+    var questions= await Questions.find({category: category});
 
     console.log(questions);
     console.log("displaying questions")

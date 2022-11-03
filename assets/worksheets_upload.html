@@ -1,18 +1,3 @@
-
-<html>
-    <style>
-    .HOA, .PSD, .POA, .ATM, .science, .history, .literature, .social, .argument, .informative, .narrative, .grammar  
-    {
-        float: left;
-        width: 50%;
-        background-color: limegreen;
-        color: white;
-        border-color: white;
-        padding: 14px 20px;
-      }
-    </style>
-   
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -46,7 +31,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: green;
+  background-color: rgb(0, 234, 255);
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -56,7 +41,7 @@
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: white;
+  color: rgb(0, 128, 255);
   display: block;
   transition: 0.3s;
   }
@@ -102,31 +87,37 @@
   
   </div>
   <div class="jumbotron"  style="padding:70px; background-color: mediumspringgreen;" >
-    <h1>Choose your Worksheet!</h1>
+    <h1>Upload your videos</h1>
      
   </div>
   <div>
-    <form action="/list_worksheets" method="GET">
-      <input list="category" name="category"  required>
-      <datalist id="category">
-        <option id="Maths:Heart of Algebra">
-        <option id="Maths:Passport to advanced mathematics">
-        <option id="Maths:Problem solving and data analysis">
-        <option id="Maths:Additional topics in math">
-        <option id="Reading:Science">
-        <option id="Reading:History">
-        <option id="Reading:Literature">
-        <option id="Reading:Social Science">
-        <option id="Writing:argument">
-        <option id="Writing:informative">
-        <option id="Writing:narrative">
-        <option id="Writing:Grammar and effective language use">
-            
-      </datalist>
-      <input type="submit">
+ 
+ 
+ <body>
+ <h2>Please choose your file and Click upload.</h2>
+  <form action="/guides/upload" enctype="multipart/form-data" method="post">
+    <input type="file" name="file">
+    <input list="category" name="category">
+  <datalist id="category">
+    <option value="Maths:Heart of Algebra">
+    <option value="Maths:Passport to advanced mathematics">
+    <option value="Maths:Problem solving and data analysis">
+    <option value="Maths:Additional topics in math">
+    <option value="Reading:Science">
+    <option value="Reading:History">
+    <option value="Reading:Literature">
+    <option value="Reading:Social Science">
+    <option value="Writing:argument">
+    <option value="Writing:informative">
+    <option value="Writing:narrative">
+    <option value="Writing:Grammar and effective language use">
 
-    </form>
-</html>
- 
- 
- 
+  </datalist>
+  <input type="submit">
+    
+
+  </form>
+
+
+ </body>
+ <html>

@@ -56,7 +56,7 @@ module.exports = {
             dirname: require('path').resolve(sails.config.appPath, 'assets/videos'),
             maxBytes:50000000000,
             maxTimeToBuffer: 100000,
-          },
+            },
            async function (err, uploadedFiles) {
             
 
@@ -75,7 +75,7 @@ module.exports = {
               let filecontrol = await Videos.create({
                 fd:fd,
                 filename:uploadedFiles[0].filename,
-                category:'general',
+                category:category,
                 userid_upload:'2',
                 filetype:uploadedFiles[0].type,
                 size:uploadedFiles[0].size

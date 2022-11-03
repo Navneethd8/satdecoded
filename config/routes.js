@@ -40,4 +40,8 @@ module.exports.routes = {
     'GET /list': { action: 'view-list' },
     'GET /quiziz': { action: 'view-quiziz' },
     'POST /evaluate-quiz': { action: 'evaluate-quiz' },
+    'POST /api/v1/fileupload': { action: 'fileupload' },
+    'POST /guides/upload': { action: 'guides/upload' },
+    'GET /list_worksheets': { action: 'view-list-worksheets' },
+
 };

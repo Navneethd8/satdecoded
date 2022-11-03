@@ -52,7 +52,7 @@ module.exports = {
    answer_description:
    {
     type: 'string',
-    required: false,
+    required: true,
    },
 
   },

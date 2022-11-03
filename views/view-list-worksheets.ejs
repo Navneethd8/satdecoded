@@ -1,21 +1,21 @@
 
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
+
 
 <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
 <div class="jumbotron"  style="padding:70px; background-color: mediumspringgreen;">
-    <h1>List Videos</h1>
+    <h1>List Worksheets</h1>
 </div>
 <table class='table table-hover table-condensed'>
 	
-	<% videos.forEach(function(video) { %>
+	<% guides.forEach(function(guide) { %>
 
 		<tr>
 		<td>
-			<video width="100%" height="240" controls>
-			<source src=<%- "\\videos\\" + video.fd %> type="video/mp4">
-			</video>
+			<button src=<%- "\\Worksheets\\" + guide.fd %>></button>
 		</td>
-		<td><%- video.filename %></td>
-		<td><%- video.category %></td> 
+		<td><%- guide.filename %></td>
+		<td><%- guide.category %></td> 
 		
 	 </tr>
   
