@@ -43,5 +43,6 @@ module.exports.routes = {
     'POST /api/v1/fileupload': { action: 'fileupload' },
     'POST /guides/upload': { action: 'guides/upload' },
     'GET /list_worksheets': { action: 'view-list-worksheets' },
-
+    'GET /difficult': { action: 'view-difficult' },
+    'POST /create-difficult-question': { action: 'create-difficult-question' },
 };

@@ -1,10 +1,5 @@
 <div id="upload questions" v-cloak>
 
-    <h1>TODO: Implement this page.</h1>
-    <p>(See also <em>assets/styles/pages/quiz.less</em>, <em>assets/js/pages/quiz.page.js</em>, and <em>api/controllers/view-quiz.js</em>.)</p>
-  
-  </div>
-  <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
   <form action="/create-question" method="post"> 
     <textarea id="qn" name="qn" rows="4" cols="50" placeholder="Enter Question Here!"  required></textarea>
         
@@ -48,3 +43,7 @@
  
 
   </form>
+
+  </div>
+  <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
+  
