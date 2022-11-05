@@ -1,6 +1,4 @@
-
-<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
 <div class="jumbotron"  style="padding:70px; background-color: mediumspringgreen;">
@@ -12,7 +10,12 @@
 
 		<tr>
 		<td>
-			<button src=<%- "\\Worksheets\\" + guide.fd %>></button>
+			<a class="fa fa-download" role="button" href=<%- "\\Worksheets\\" + guide.fd %> download=<%- "\\Worksheets\\" + guide.fd %>> Download </a>
+			<!-- <button class="btn" type="submit" onclick=""><i class="fa fa-download">></i> Download</button> -->
+			<!-- <embed src=<%- "\\Worksheets\\" + guide.fd %> width="800px" height="2100px" /> -->
+				<!-- <button type="submit" onclick="window.open('file.doc')">Download!</button> -->
+
+			<!-- <button src=></button> -->
 		</td>
 		<td><%- guide.filename %></td>
 		<td><%- guide.category %></td> 

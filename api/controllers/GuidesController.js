@@ -75,7 +75,7 @@
                let filecontrol = await Guides.create({
                  fd:fd,
                  filename:uploadedFiles[0].filename,
-                 category:category,
+                 category:'Maths:Heart of Algebra',
                  userid_upload:'2',
                  filetype:uploadedFiles[0].type,
                  size:uploadedFiles[0].size
