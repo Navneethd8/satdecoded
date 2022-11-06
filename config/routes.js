@@ -45,4 +45,6 @@ module.exports.routes = {
     'GET /list_worksheets': { action: 'view-list-worksheets' },
     'GET /difficult': { action: 'view-difficult' },
     'POST /create-difficult-question': { action: 'create-difficult-question' },
+    'GET /approve': { action: 'view-approve' },
+    'POST /app': { action: 'app' },
 };

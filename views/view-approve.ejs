@@ -1,0 +1,36 @@
+<div id="approve" v-cloak>
+
+  <h1>TODO: Implement this page.</h1>
+  <p>(See also <em>assets/styles/pages/approve.less</em>, <em>assets/js/pages/approve.page.js</em>, and <em>api/controllers/view-approve.js</em>.)</p>
+
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
+<table class='table table-hover table-condensed'>
+	
+	<% diff.forEach(function(diff) { %>
+
+	<tr>
+	<td><%- diff.qn %></td>
+	<td><%- diff.answer1 %></td> 
+    <td><%- diff.answer2 %></td> 
+    <td><%- diff.answer3 %></td> 
+    <td><%- diff.answer4 %></td>
+    <td><%- diff.correct_answer %></td> 
+    <td><%- diff.category %></td>
+    <td><%- diff.answer_description %></td> 
+
+
+
+
+
+
+		<td>
+			<form action=<%= "/app\?question_id\=" + diff.id + "\&user_id\=2"  %> method ='post'>			
+				<button type="submit" value="Submit">Approve</button>
+			</form>
+		</td>
+	 </tr> 
+  
+	<% }); %>
+	
+	</table>

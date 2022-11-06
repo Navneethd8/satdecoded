@@ -73,7 +73,7 @@ module.exports = {
        answer4:inputs.answer4,
        correct_answer:inputs.correct_answer,
        answer_description:inputs.answer_description,
-       
+       approved_status:false,
       }).fetch();
     return env.res.redirect("/admin_home_page.html")
    
