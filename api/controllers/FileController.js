@@ -50,8 +50,11 @@ module.exports = {
       
       upload: function  (req, res) {
         console.log("BEgin"),
+<<<<<<< HEAD
         console.log(req.body.category)
         var category = req.body.category
+=======
+>>>>>>> cf08579a1baa8c82e44eafd86a3c0acfe53abf6b
         
         req.file('file').upload({
           
@@ -72,7 +75,12 @@ module.exports = {
               fd=str.substring(str.lastIndexOf("\\")+1);
               console.log("video upload success",fd);
               
+<<<<<<< HEAD
               console.log(category);
+=======
+              category=uploadedFiles[0].category;
+              console.log(req.category);
+>>>>>>> cf08579a1baa8c82e44eafd86a3c0acfe53abf6b
               let filecontrol = await Videos.create({
                 fd:fd,
                 filename:uploadedFiles[0].filename,
@@ -88,7 +96,11 @@ module.exports = {
               // email= await User.meta.fetch(email_id)
               // console.log(email)
               // user_email(email);
+<<<<<<< HEAD
               // Window.alert("Your Video has been sent for approval.Once approved it will be displayed on the website")
+=======
+               //Window.alert("Your Video has been sent for approval.Once approved it will be displayed on the website")
+>>>>>>> cf08579a1baa8c82e44eafd86a3c0acfe53abf6b
               return res.redirect('/video_detail_page.html');
             }
           
