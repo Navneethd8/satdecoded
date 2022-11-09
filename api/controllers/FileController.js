@@ -28,10 +28,7 @@ module.exports = {
 
         res.writeHead(200, {'content-type': 'text/html'});
         res.end(
-        '<form action="http://localhost:1337/file/upload" enctype="multipart/form-data" method="post">'+
-        '<input type="text" name="title"><br>'+
-        '<input type="file" name="file" multiple="multiple"><br>'+
-        '<input type="submit" value="Upload">'+'<input list="category" name="category">'+
+        '<form action="http://localhost:1337/file/upload" enctype="multipart/form-data" method="post">'+'<input list="category" name="category">'+
         '<datalist id="category">'
         +'<option value="Heart of Algebra">'+'<option value="Passport to advanced mathematics">' +
           '<option value="Problem solving and data analysis">'+'<option value="Additional topics in math">'+
@@ -40,7 +37,10 @@ module.exports = {
           '<option value="Writing:argument">'+
           '<option value="Writing:informative">'+
           '<option value="Writing:narrative">'+
-          '<option value="Grammar and effective language use">'+'</datalist>',
+          '<option value="Grammar and effective language use">'+'</datalist>'+
+        '<input type="text" name="title"><br>'+
+        '<input type="file" name="file" multiple="multiple"><br>'+
+        '<input type="submit" value="Upload">',
         '</form>'
         
         )
@@ -86,7 +86,7 @@ module.exports = {
               // email= await User.meta.fetch(email_id)
               // console.log(email)
               // user_email(email);
-               Window.alert("Your Video has been sent for approval.Once approved it will be displayed on the website")
+               //Window.alert("Your Video has been sent for approval.Once approved it will be displayed on the website")
               return res.redirect('/video_detail_page.html');
             }
           
