@@ -49,7 +49,6 @@ module.exports = {
       
       upload: function  (req, res) {
         console.log("BEgin"),
-        console.log(req),
         
         req.file('file').upload({
           
@@ -71,7 +70,7 @@ module.exports = {
               console.log("video upload success",fd);
               
               category=uploadedFiles[0].category;
-              console.log(category);
+              console.log(req.category);
               let filecontrol = await Videos.create({
                 fd:fd,
                 filename:uploadedFiles[0].filename,
