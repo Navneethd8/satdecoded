@@ -94,10 +94,9 @@
  
  
  <body>
- <h2>Please choose your file and Click upload.</h2>
+ <h2>Please choose your category and Click upload.</h2>
   <form action="/file/upload" enctype="multipart/form-data" method="post">
-    <input type="file" name="file">
-    <input list="category" name="category">
+    <input list="category" name="category" id="category">
   <datalist id="category">
     <option value="Maths:Heart of Algebra">
     <option value="Maths:Passport to advanced mathematics">
@@ -112,7 +111,8 @@
     <option value="Writing:narrative">
     <option value="Writing:Grammar and effective language use">
 
-  </datalist>
+  </datalist><br/><br/>
+    <input type="file" name="file"><br/>
   <input type="submit">
     
 

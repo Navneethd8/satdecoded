@@ -30,8 +30,7 @@ module.exports = {
         res.end(
         '<form action="http://localhost:1337/file/upload" enctype="multipart/form-data" method="post">'+
         '<input type="text" name="title"><br>'+
-        '<input type="file" name="file" multiple="multiple"><br>'+
-        '<input type="submit" value="Upload">'+'<input list="category" name="category">'+
+	'<input list="category" name="category" id="category">'+
         '<datalist id="category">'
         +'<option value="Heart of Algebra">'+'<option value="Passport to advanced mathematics">' +
           '<option value="Problem solving and data analysis">'+'<option value="Additional topics in math">'+
@@ -40,7 +39,9 @@ module.exports = {
           '<option value="Writing:argument">'+
           '<option value="Writing:informative">'+
           '<option value="Writing:narrative">'+
-          '<option value="Grammar and effective language use">'+'</datalist>',
+          '<option value="Grammar and effective language use">'+'</datalist><br/>'+
+        '<input type="file" name="file"><br>'+
+        '<input type="submit" value="Upload">',
         '</form>'
         
         )
@@ -49,7 +50,8 @@ module.exports = {
       
       upload: function  (req, res) {
         console.log("BEgin"),
-        console.log(req),
+        console.log(req.body.category)
+        var category = req.body.category
         
         req.file('file').upload({
           
@@ -70,7 +72,6 @@ module.exports = {
               fd=str.substring(str.lastIndexOf("\\")+1);
               console.log("video upload success",fd);
               
-              category=uploadedFiles[0].category;
               console.log(category);
               let filecontrol = await Videos.create({
                 fd:fd,
@@ -87,7 +88,7 @@ module.exports = {
               // email= await User.meta.fetch(email_id)
               // console.log(email)
               // user_email(email);
-               Window.alert("Your Video has been sent for approval.Once approved it will be displayed on the website")
+              // Window.alert("Your Video has been sent for approval.Once approved it will be displayed on the website")
               return res.redirect('/video_detail_page.html');
             }
           
