@@ -48,10 +48,19 @@ module.exports = {
       },
 
       
-      upload: function  (req, res) {
+      upload: async function  (req, res) {
         console.log("BEgin"),
         console.log(req.body.category)
         var category = req.body.category
+        console.log("---Session---")
+        console.log(req.cookies['user'])
+        var user_id = 0
+	if (req.cookies['user']) {
+		const user = await User.findOne({ email: req.cookies['user']})
+		console.log(user.email)
+		user_id = user.id
+	}
+        console.log("---Session---")
         
         req.file('file').upload({
           
@@ -79,7 +88,8 @@ module.exports = {
                 category:category,
                 userid_upload:'2',
                 filetype:uploadedFiles[0].type,
-                size:uploadedFiles[0].size
+                size:uploadedFiles[0].size,
+		userid_upload: user_id
                }).fetch();
               //  console.log('before function user_email')
               //  const user = await User.findOne({ email: email});

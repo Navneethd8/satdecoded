@@ -68,6 +68,7 @@ console.log("before success")
 //   token, });
 res= env.res
 env.req.session=user;
+env.res.cookie('user', user.email)
 console.log('printing session')
 console.log(env.req.session)
 if (inputs.email== 'navneethd8@gmail.com')
