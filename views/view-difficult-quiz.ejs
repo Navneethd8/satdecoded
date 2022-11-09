@@ -1,0 +1,123 @@
+<style>
+	body {
+	  font-family: "Lato", sans-serif;
+	}
+	
+	.sidenav {
+	  height: 100%;
+	  width: 0;
+	  position: fixed;
+	  z-index: 1;
+	  top: 0;
+	  left: 0;
+	  background-color: rgb(52, 52, 52);
+	  overflow-x: hidden;
+	  transition: 0.5s;
+	  padding-top: 60px;
+	}
+	
+	.sidenav a {
+	  padding: 8px 8px 8px 32px;
+	  text-decoration: none;
+	  font-size: 25px;
+	  color: rgb(255,0,0);
+	  display: block;
+	  transition: 0.3s;
+	}
+	
+	.sidenav a:hover {
+	  color: #f1f1f1;
+	}
+	
+	.sidenav .closebtn {
+	  position: absolute;
+	  top: 0;
+	  right: 25px;
+	  font-size: 36px;
+	  margin-left: 50px;
+	}
+	
+	@media screen and (max-height: 450px) {
+	  .sidenav {padding-top: 30px;}
+	  .sidenav a {font-size: 36px;}
+	}
+	</style>
+  
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<!-- <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %> -->
+<% questions.forEach(function(question) { %>
+   
+<body>
+	<div class="panel">
+		<div class="result">
+
+		</div>
+		<div class="question-container" id="question">
+			<%- question.qn %>
+		</div>
+		<div class="option-container" id="answers-container">
+			<form name=<%- question.correct_answer %> id= <%- '"' + question.id + '"' %> >
+				<input type="radio" name=<%- question.id %> id=<%- question.id + '1"' %> value = <%-JSON.stringify(question.answer1)%>> <%- question.answer1 %></input><br/>
+				<input type="radio" name=<%- question.id %> id=<%- question.id + '2"' %> value = <%-JSON.stringify(question.answer2)%>> <%- question.answer2 %></input><br/>
+				<input type="radio" name=<%- question.id %> id=<%- question.id + '3"' %> value = <%-JSON.stringify(question.answer3)%>> <%- question.answer3 %></input><br/>
+				<input type="radio" name=<%- question.id %> id=<%- question.id + '4"' %> value = <%-JSON.stringify(question.answer4)%>> <%- question.answer4 %></input><br/>
+				<div id="answer_status"> </div>
+				<div id="correct_answer" hidden><%- question[question.correct_answer] %></div>
+				<div id="answer_description" hidden><%- "Explanation: " + question.answer_description %></div>
+			</form>
+			</div>
+		</div>
+        
+			
+	</div>
+</body>
+  <% }); %>
+  
+	<script>
+		
+	function checkAnswers() 
+		{ 
+		  console.log('Begin check answer')
+	          answers = document.getElementById('answers-container')
+		  answer_forms = document.forms;
+		  for (var i=0; i<answer_forms.length; i++)  {
+			var radios = answer_forms[i].elements;// inputs from radio buttons
+			var quiz_id = parseInt(answer_forms[i].name)// identity of the quiz
+			console.log(quiz_id, answer_forms[i].children)
+			var children = answer_forms[i].children // all the divs inside the form
+			var correct_answer =""
+			var answer_status
+			var answer_description
+			for (var k=0; k < children.length; k++) {
+				if (children[k].id === "correct_answer") correct_answer = children[k].innerHTML;
+				if (children[k].id === "answer_description") answer_description = children[k];
+				if (children[k].id === "answer_status") answer_status = children[k];
+			}
+			answer_status.innerHTML = "Incorrect Answer"	
+			var incorrect = true
+		  	for (var j=0; j<radios.length; j++)  {
+				console.log(radios[j], radios[j].checked, radios[j].value, correct_answer )
+				if (radios[j].checked && radios[j].value === correct_answer ) {
+					answer_status.innerHTML = "Correct Answer"
+					incorrect = false
+					break;
+				}
+			}
+			answer_description.hidden = false
+			correct_answer.hidden = false
+		  }
+		  console.log('END check answer')
+		
+		};
+		</script>
+		<script>
+		  </script>
+	<button type="submit" onclick="checkAnswers()">Evaluate</button> 
+	<button id="submit" onclick="window.print()">Print Quiz</button> 
