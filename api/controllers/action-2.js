@@ -31,6 +31,19 @@ module.exports = {
 
   fn: async function (inputs,exits,env) {
     console.log("invoking action 2")
+    console.log(env.req.body.category)
+    var category = env.req.body.category
+    console.log("---Session---")
+    console.log(env.req.cookies['user'])
+    var user_id = 0
+    if (env.req.cookies['user']) {
+    const user = await User.findOne({ email: env.req.cookies['user']})
+    console.log(user.email)
+    email=user.email
+    console.log(user.id)
+    user_id = user.id
+    console.log(user_id)
+    }
     console.log(inputs.video_id)
     try{
       console.log('entering approve function')
@@ -50,20 +63,16 @@ module.exports = {
    console.log(inputs)
    const user = await User.findOne({ id: inputs.user_id});
 
-  //  console.log(user.email)
-  //  if (!user) {
-    return env.res.redirect('/')
- //};
-    //  const email = {
-    //   to: user.email,
-    //   subject: "Approval of videos",
-    //   template: "video_approved",
+     const email = {
+      to: user.email,
+      subject: "Approval of videos",
+      template: "vid_approved",
       
-    //  };
-    //  console.log(email)
-    //  await sails.helpers.sendMail(email);
-    //   console.log("email approved sent ");
-     // return env.res.redirect("/video_detail_page.html")
+     };
+     console.log(email)
+     await sails.helpers.sendMail(email);
+      console.log("email approved sent ");
+     return env.res.redirect("/list_videos")
 
     }
     catch{

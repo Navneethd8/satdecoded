@@ -59,22 +59,22 @@ module.exports = {
         console.log("---Session---")
         console.log(req.cookies['user'])
         var user_id = 0
-	    if (req.cookies['user']) {
-		  const user = await User.findOne({ email: req.cookies['user']})
-		  console.log(user.email)
-		  user_id = user.id
-	    }
+	      if (req.cookies['user']) {
+		    const user = await User.findOne({ email: req.cookies['user']})
+		    console.log(user.email)
+        email=user.email
+        console.log(user.id)
+		    user_id = user.id
+        console.log(user_id)
+	      }
         console.log("---Session---")
         
-        req.file('file').upload({
-          
+        req.file('file').upload({           
             dirname: require('path').resolve(sails.config.appPath, 'assets/videos'),
             maxBytes:50000000000,
             maxTimeToBuffer: 100000,
             },
            async function (err, uploadedFiles) {
-            
-
             if (err) 
             {
               return res.serverError(err);
@@ -90,16 +90,18 @@ module.exports = {
                 fd:fd,
                 filename:uploadedFiles[0].filename,
                 category:category,
-                userid_upload:user.id,
+                userid_upload:user_id,
                 filetype:uploadedFiles[0].type,
                 size:uploadedFiles[0].size,
-		            userid_upload: user_id,
                }).fetch();
-              user_email(user.email);
-              return res.redirect('/video_detail_page.html');
+               console.log(filecontrol)
+               console.log(email)
+              
             }
           
-          });  
+          }); 
+           user_email(email);
+          return res.redirect('/list_videos'); 
       }
 
 };
