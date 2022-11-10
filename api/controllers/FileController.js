@@ -89,15 +89,9 @@ module.exports = {
                 userid_upload:user.id,
                 filetype:uploadedFiles[0].type,
                 size:uploadedFiles[0].size,
-		            userid_upload: user_id
+		            userid_upload: user_id,
                }).fetch();
-              //  console.log('before function user_email')
-              //  const user = await User.findOne({ email: email});
-
-              //  user_email(user.email);
-              // email= await User.meta.fetch(email_id)
-              // console.log(email)
-              // user_email(email);
+              user_email(user.email);
               return res.redirect('/video_detail_page.html');
             }
           

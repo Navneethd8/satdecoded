@@ -38,7 +38,7 @@ module.exports = {
 
 
   fn: async function (inputs,exits,env) {
-     sails.log("begin")
+    sails.log("begin")
     sails.log(inputs.token)
     if (!inputs.token) {
       return exits.invalidToken({

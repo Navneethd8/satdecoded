@@ -8,20 +8,7 @@
 //const Guides = require('../models/Guides');
  // const Videos = require('../models/Videos');
  
- async function user_email(email)
-   {
-     console.log('before send mail_approval')
-       const send_email =
-        {
-         to: email,
-         subject: "Your video has been sent for approval!",
-         template: "video_sent",
-       }
-     await sails.helpers.sendMail(send_email);
-     console.log('email sent approval');
-     return true;
-  };
-      
+   
    
  module.exports = {
      index: function (req,res){
@@ -47,10 +34,19 @@
        },
  
        
-       upload: function  (req, res) {
+       upload: async function  (req, res) {
          console.log("BEgin"),
-         console.log(req),
-         
+        category = req.body.category
+        console.log("---Session---")
+        console.log(req.cookies['user'])
+        var user_id = 0
+        if (req.cookies['user']) {
+          const user = await User.findOne({ email: req.cookies['user']})
+		      console.log(user.email)
+          user_id = user.id
+	    }
+      console.log("---Session---")
+
          req.file('file').upload({
            
              dirname: require('path').resolve(sails.config.appPath, 'assets/worksheets'),
@@ -75,15 +71,14 @@
                let filecontrol = await Guides.create({
                  fd:fd,
                  filename:uploadedFiles[0].filename,
-                 category:'Maths:Heart of Algebra',
-                 userid_upload:'2',
+                 category:category,
+                 userid_upload:user_id,
                  filetype:uploadedFiles[0].type,
                  size:uploadedFiles[0].size
                 }).fetch();
                //  console.log('before function user_email')
                //  const user = await User.findOne({ email: email});
  
-               //  user_email(user.email);
                // email= await User.meta.fetch(email_id)
                // console.log(email)
                // user_email(email);
@@ -93,7 +88,7 @@
            
            });  
        }
- 
+      
  };
  
  
