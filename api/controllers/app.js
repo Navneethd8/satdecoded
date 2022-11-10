@@ -50,7 +50,7 @@ module.exports = {
 
   //  console.log(user.email)
   //  if (!user) {
-    return env.res.redirect('/')
+    return env.res.redirect('/admin_after_sign_in.html')
  //};
     //  const email = {
     //   to: user.email,
