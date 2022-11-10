@@ -55,11 +55,11 @@ module.exports = {
         console.log("---Session---")
         console.log(req.cookies['user'])
         var user_id = 0
-	if (req.cookies['user']) {
-		const user = await User.findOne({ email: req.cookies['user']})
-		console.log(user.email)
-		user_id = user.id
-	}
+	    if (req.cookies['user']) {
+		  const user = await User.findOne({ email: req.cookies['user']})
+		  console.log(user.email)
+		  user_id = user.id
+	    }
         console.log("---Session---")
         
         req.file('file').upload({
@@ -86,10 +86,10 @@ module.exports = {
                 fd:fd,
                 filename:uploadedFiles[0].filename,
                 category:category,
-                userid_upload:'2',
+                userid_upload:user.id,
                 filetype:uploadedFiles[0].type,
                 size:uploadedFiles[0].size,
-		userid_upload: user_id
+		            userid_upload: user_id
                }).fetch();
               //  console.log('before function user_email')
               //  const user = await User.findOne({ email: email});
