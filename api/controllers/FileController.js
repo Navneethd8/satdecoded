@@ -32,10 +32,14 @@ module.exports = {
         '<input type="text" name="title"><br>'+
 	'<input list="category" name="category" id="category">'+
         '<datalist id="category">'
-        +'<option value="Heart of Algebra">'+'<option value="Passport to advanced mathematics">' +
-          '<option value="Problem solving and data analysis">'+'<option value="Additional topics in math">'+
-          '<option value="Reading:Science">'+'<option value="Reading:History">'+
-          '<option value="Reading:Literature">'+'<option value="Reading:Social Science">'+
+        +'<option value="Heart of Algebra">'+
+        '<option value="Passport to advanced mathematics">' +
+          '<option value="Problem solving and data analysis">'+
+          '<option value="Additional topics in math">'+
+          '<option value="Reading:Science">'
+          +'<option value="Reading:History">'+
+          '<option value="Reading:Literature">'
+          +'<option value="Reading:Social Science">'+
           '<option value="Writing:argument">'+
           '<option value="Writing:informative">'+
           '<option value="Writing:narrative">'+
