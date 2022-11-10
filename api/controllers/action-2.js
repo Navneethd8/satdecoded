@@ -39,7 +39,7 @@ module.exports = {
     if (env.req.cookies['user']) {
     const user = await User.findOne({ email: env.req.cookies['user']})
     console.log(user.email)
-    email=user.email
+    email1=user.email
     console.log(user.id)
     user_id = user.id
     console.log(user_id)
@@ -62,9 +62,10 @@ module.exports = {
    console.log(" before email=approved");
    console.log(inputs)
    const user = await User.findOne({ id: inputs.user_id});
-
+    console.log("before email")
+    console.log(email1)
      const email = {
-      to: user.email,
+      to: email1,
       subject: "Approval of videos",
       template: "vid_approved",
       
@@ -77,11 +78,8 @@ module.exports = {
     }
     catch{
       return env.res.redirect("error_somethingwentwrong.html")
-
     }
     // All done.
-    return;
-
-  },
+   },
 
 };
