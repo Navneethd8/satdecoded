@@ -202,9 +202,13 @@ const puppeteer = require('puppeteer');
       console.log("email approved sent ");
     }
 
+	}
+	function output()
+	{
+		sendmail();
 	}	
 		</script>
 	<button type="submit" onclick="checkAnswers()">Evaluate</button> 
 	<!-- window.print() is the old notation for  -->
 	<button id="submit" onclick="generatePDF()">Print Quiz</button>
-	<button id="submit" onclick="sendmail()">Send Quiz</button> 
+	<button id="submit" onclick="output()">Send Quiz</button> 
