@@ -1,3 +1,6 @@
+<script>
+const puppeteer = require('puppeteer');
+</script>
 <style>
 	body {
 	  font-family: "Lato", sans-serif;
@@ -151,12 +154,57 @@
 		};
 		</script>
 		<script>
-		async function email(email)
-		{
-			
+		
+	async function generatePDF() {
+		url=""//TODO:URL NEEDS TO BE DONE
+        const browser = await puppeteer.launch({ headless: true }); // Puppeteer can only generate pdf in headless mode.
+        const page = await browser.newPage();
+        await page.goto(url, { waitUntil: 'networkidle', networkIdleTimeout: 5000 }); // Adjust network idle as required. 
+        const pdfConfig = {
+            format: 'A4',
+            printBackground: true,
+            margin: { // Word's default A4 margins
+                top: '2.54cm',
+                bottom: '2.54cm',
+                left: '2.54cm',
+                right: '2.54cm'
+            }
+        };
+        await page.emulateMedia('screen');
+        const pdf = await page.pdf(pdfConfig); // Return the pdf buffer. Useful for saving the file not to disk. 
 
-		}
+        await browser.close();
+
+        return pdf;
+    }
+	
+	async function sendmail()
+	{
+	console.log(env.req.body.category)
+    var category = env.req.body.category
+    console.log("---Session---")
+    console.log(env.req.cookies['user'])
+    var user_id = 0
+    if (env.req.cookies['user']) {
+    const user = await User.findOne({ email: env.req.cookies['user']})
+    console.log(user.email)
+    email1=user.email
+    console.log("before email")
+    console.log(email1)
+     const email = {
+      to: email1,
+      subject: "Approval of videos",
+      template: "vid_approved",
+      
+     };
+     console.log(email)
+     await sails.helpers.sendMail(email);
+      console.log("email approved sent ");
+    }
+
+	}	
 		</script>
 	<button type="submit" onclick="checkAnswers()">Evaluate</button> 
-	<button id="submit" onclick="window.print()">Print Quiz</button>
-	<button id="submit" onclick="">Send Quiz</button> 
+	<!-- window.print() is the old notation for  -->
+	<button id="submit" onclick="generatePDF()">Print Quiz</button>
+	<button id="submit" onclick="sendmail()">Send Quiz</button> 

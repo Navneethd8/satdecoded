@@ -17,7 +17,7 @@
     "nodemailer-express-handlebars": "^5.0.0",
     "nodemailer-sendgrid": "^1.0.3",
     "nodemon": "^2.0.20",
-    "puppeteer": "^19.2.0",
+    "puppeteer": "^19.2.2",
     "sails": "^1.5.2",
     "sails-generate-scaffold": "^0.0.5",
     "sails-hook-grunt": "^5.0.0",
