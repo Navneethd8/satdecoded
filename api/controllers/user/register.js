@@ -78,18 +78,22 @@ return env.res.redirect('/account_created.html')
 
     }
     catch (error){
-        if (error.code === 'E_UNIQUE') {
+        if (error.code === 'E_UNIQUE') 
+        {
         // return exits.emailAlreadyInUse({
         //   message: 'Oops :) an error occurred',
         //   error: 'This email address already exits',
         // });
         return env.res.redirect('/error_emailalreadyexists.html')
-}
+        }
+        else
+        {
+          return env.res.redirect('/error_somethingwentwrong.html')
+        }
 // return exits.error({
 //   message: 'Oops :) an error occurred',
 //   error: error.message,
 // });
-return env.res.redirect('/error_somethingwentwrong.html')
 
     }
 

@@ -32,13 +32,15 @@ module.exports = {
 
   fn: async function (inputs,exits,env) {
     res=env.res
-console.log("error")
+    console.log("error")
     if (!inputs.token) {
       // return exits.invalidOrExpiredToken({
       //   error: "The provided token is expired, invalid, or already used up.",
       // });
       return env.res.redirect('/invalidtoken.html')
     }
+    else
+    {
     var user = await User.findOne({ emailProofToken: inputs.token });
     if (!user || user.emailProofTokenExpiresAt <= Date.now()) {
       return env.res.redirect('/error-somethingwentwrong')
@@ -59,6 +61,9 @@ console.log("error")
   return env.res.redirect('/account_confirmed.html')
 }
 
+
+    }
+    
 
     // All done.
    
