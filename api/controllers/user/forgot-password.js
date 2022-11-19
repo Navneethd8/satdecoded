@@ -34,7 +34,7 @@ module.exports = {
 try {
   var user = await User.findOne({ email: inputs.email });
   if (!user) {
-    return;
+    return env.res.redirect('/somethingwentwrong.html')
   }
   const token = await sails.helpers.strings.random("url-friendly");
   x= Date.now() + 24 * 60 * 60 * 1000;

@@ -51,8 +51,7 @@ module.exports = {
         return env.res.redirect('/usernotfound')
      }
      console.log("before password")
-     await sails.helpers.passwords
-    .checkPassword(inputs.password, user.password)
+     await sails.helpers.passwords.checkPassword(inputs.password, user.password)
         .intercept('incorrect', (error) => {
       exits.passwordMismatch({ error: error.message });
       console.log("after pw")

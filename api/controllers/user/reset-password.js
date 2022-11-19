@@ -41,17 +41,13 @@ module.exports = {
     sails.log("begin")
     sails.log(inputs.token)
     if (!inputs.token) {
-      return exits.invalidToken({
-        error: "Your reset token is either invalid or expired",
-      });
+      return env.res.redirect("/error_invalid_token.html")
     }
     else {
       var user = await User.findOne({ passwordResetToken: inputs.token });
       password=inputs.token;
       if (!user || user.passwordResetTokenExpiresAt <= Date.now()) {
-        return exits.invalidToken({
-          error: "Your reset token is either invalid or expired",
-        });
+        return env.res.redirect('/error_invalid_token.html')
       }
       const hashedPassword = await sails.helpers.passwords.hashPassword(
         inputs.password
@@ -61,13 +57,9 @@ module.exports = {
         passwordResetToken: "",
         passwordResetTokenExpiresAt: 0,
   });
-  const token = await sails.helpers.generateNewJwtToken(user.email);
-  this.req.user = user;
-  return exits.success({
-    message: `Password reset successful. ${user.email} has been logged in`,
-    data: user,
-    token,
-  });
+    const token = await sails.helpers.generateNewJwtToken(user.email);
+    this.req.user = user;
+    return env.res.redirect('/home_after_sign_in.html')
   
     
     }
@@ -75,43 +67,3 @@ module.exports = {
 
 
  };
-    // sails.log("invalid")
-    //   return env.res.redirect("/error_invalid_token.html")
-
-
-
-//  }
-//  console.log("before ok")
-//  const user = await User.findOne({ passwordResetToken: inputs.token });
-//  console.log("Ok")
-//  if (!user || user.passwordResetTokenExpiresAt <= Date.now()) {
-//   // return exits.invalidToken({
-//   //   error: "Your reset token is either invalid or expired",
-//   // });
-//   console.log("invalid token")
-//   return env.res.redirect("/error_invalid_token.html")
-// }
-// console.log("before has")
-// const hashedPassword = await sails.helpers.passwords.hashPassword(
-//   inputs.password
-// );
-// console.log("after hash and befire update")
-// await User.updateOne({ id: user.id }).set({
-//   password: hashedPassword,
-//   passwordResetToken: inputs.token,
-//   passwordResetTokenExpiresAt: 0,
-// });
-// console.log("after update")
-// const token = await sails.helpers.generateNewJwtToken(user.email);
-// this.req.user = user;
-// // return exits.success({
-// //   message: `Password reset successful. ${user.email} has been logged in`,
-// //   data: user,
-// //   token,
-// // });
-// console.log("success")
-// return env.res.redirect('/home_after_sign_in.html')
-//   }
-
-
-

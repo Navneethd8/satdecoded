@@ -68,8 +68,7 @@ module.exports = {
         console.log(user_id)
 	      }
         console.log("---Session---")
-        
-        req.file('file').upload({           
+            req.file('file').upload({           
             dirname: require('path').resolve(sails.config.appPath, 'assets/videos'),
             maxBytes:50000000000,
             maxTimeToBuffer: 100000,
@@ -105,4 +104,3 @@ module.exports = {
       }
 
 };
-

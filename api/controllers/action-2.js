@@ -51,9 +51,7 @@ module.exports = {
       console.log(video);
       if (!video) {
         console.log("video not found")
-        return exits.video_not_found({
-          error: `Video was not found`,
-        });
+        return env.res.redirect("/error_somethingwentwrong.html")
      }
      console.log("set videos");
      await Videos.update({ id: video.id }).set({
