@@ -56,7 +56,7 @@ module.exports = {
     if(randm < 0) randm = 0;
     
     // var questions= await Questions.findAll().where();
-    var questions= await Questions.find({category:inputs.category,correct_answer:inputs.correct_answer});
+    var questions= await Questions.find({category:inputs.category,correct_answer:inputs.correct_answer}).limit(10);
     shuffle(questions)
     // var questions=Questions.findOne({order: sequelize.random()});  
     // Respond with view.
