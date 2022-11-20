@@ -75,7 +75,7 @@ module.exports = {
        answer_description:inputs.answer_description,
        approved_status:false,
       }).fetch();
-    return env.res.redirect("/admin_after_sign_in.html")
+    return env.res.redirect("/formquiz.html")
    
 
 

@@ -36,9 +36,7 @@ module.exports = {
       console.log(diffi);
       if (!diffi) {
         console.log("video not found")
-        return exits.video_not_found({
-          error: `Video was not found`,
-        });
+        return exits.question_not_found({error: `Question was not found`,}), env.res.redirect('/error_somethingwentwrong.html')
      }
      console.log("set videos");
      await Difficult.update({ id: diffi.id }).set({
@@ -46,11 +44,11 @@ module.exports = {
    });
    console.log(" before email=approved");
    console.log(inputs)
-   const user = await User.findOne({ id: inputs.user_id});
+   //const user = await User.findOne({ id: inputs.user_id});
 
   //  console.log(user.email)
   //  if (!user) {
-    return env.res.redirect('/admin_after_sign_in.html')
+    return env.res.redirect('/generate_difficult_quiz.html')
  //};
     //  const email = {
     //   to: user.email,

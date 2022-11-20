@@ -121,7 +121,7 @@ const puppeteer = require('puppeteer');
 	function checkAnswers() 
 		{ 
 		  console.log('Begin check answer')
-	          answers = document.getElementById('answers-container')
+	        answers = document.getElementById('answers-container')
 		  answer_forms = document.forms;
 		  for (var i=0; i<answer_forms.length; i++)  {
 			var radios = answer_forms[i].elements;// inputs from radio buttons
@@ -132,9 +132,12 @@ const puppeteer = require('puppeteer');
 			var answer_status
 			var answer_description
 			for (var k=0; k < children.length; k++) {
-				if (children[k].id === "correct_answer") correct_answer = children[k].innerHTML;
-				if (children[k].id === "answer_description") answer_description = children[k];
-				if (children[k].id === "answer_status") answer_status = children[k];
+				if (children[k].id === "correct_answer")
+				correct_answer = children[k].innerHTML;
+				if (children[k].id === "answer_description")
+				answer_description = children[k];
+				if (children[k].id === "answer_status") 
+				answer_status = children[k];
 			}
 			answer_status.innerHTML = "Incorrect Answer"	
 			var incorrect = true
@@ -178,37 +181,33 @@ const puppeteer = require('puppeteer');
         return pdf;
     }
 	
-	async function sendmail()
-	{
-	console.log(env.req.body.category)
-    var category = env.req.body.category
-    console.log("---Session---")
-    console.log(env.req.cookies['user'])
-    var user_id = 0
-    if (env.req.cookies['user']) {
-    const user = await User.findOne({ email: env.req.cookies['user']})
-    console.log(user.email)
-    email1=user.email
-    console.log("before email")
-    console.log(email1)
-     const email = {
-      to: email1,
-      subject: "Approval of videos",
-      template: "vid_approved",
+	// async function sendmail()
+	// {
+	// console.log(env.req.body.category)
+    // var category = env.req.body.category
+    // console.log("---Session---")
+    // console.log(env.req.cookies['user'])
+    // var user_id = 0
+    // if (env.req.cookies['user']) {
+    // const user = await User.findOne({ email: env.req.cookies['user']})
+    // console.log(user.email)
+    // email1=user.email
+    // console.log("before email")
+    // console.log(email1)
+    //  const email = {
+    //   to: email1,
+    //   subject: "Approval of videos",
+    //   template: "vid_approved",
       
-     };
-     console.log(email)
-     await sails.helpers.sendMail(email);
-      console.log("email approved sent ");
-    }
+    //  };
+    //  console.log(email)
+    //  await sails.helpers.sendMail(email);
+    //   console.log("email approved sent ");
+    // }
 
-	}
-	function output()
-	{
-		sendmail();
-	}	
-		</script>
+	// }
+		
+	</script>
 	<button type="submit" onclick="checkAnswers()">Evaluate</button> 
 	<!-- window.print() is the old notation for  -->
-	<button id="submit" onclick="generatePDF()">Print Quiz</button>
-	<button id="submit" onclick="output()">Send Quiz</button> 
+	<button id="submit" onclick="window.print();">Print Quiz</button>
