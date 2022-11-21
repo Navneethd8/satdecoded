@@ -70,7 +70,7 @@ env.req.session=user;
 env.res.cookie('user', user.email)
 console.log('printing session')
 console.log(env.req.session)
-if (inputs.email== 'navneethd8@gmail.com')
+if (inputs.email== 'satdecoded5@gmail.com')
 {
   return env.res.redirect('/admin_after_sign_in.html')
 }

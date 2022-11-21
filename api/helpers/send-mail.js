@@ -9,7 +9,7 @@ module.exports = {
       type: "ref",
       required: true,
     },
-  },
+},
   exits: {
     success: {
       description: "All done.",
