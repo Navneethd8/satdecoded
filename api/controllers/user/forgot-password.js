@@ -30,8 +30,7 @@ module.exports = {
 
   fn: async function (inputs,exits,env) {
     res=env.res;
-   
-try {
+   try {
   var user = await User.findOne({ email: inputs.email });
   if (!user) {
     return env.res.redirect('/somethingwentwrong.html')
@@ -62,12 +61,6 @@ catch (error) {
   console.log('error')
   sails.log(error);
   return env.res.redirect('/somethingwentwrong.html')
-}
-// return exits.success({
-//   message: `A reset password email has been sent to ${user.email}.`,
-// });
-    
+}   
   }
-
-
 };

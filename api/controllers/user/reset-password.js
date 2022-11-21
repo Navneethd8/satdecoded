@@ -59,11 +59,7 @@ module.exports = {
   });
     const token = await sails.helpers.generateNewJwtToken(user.email);
     this.req.user = user;
-    return env.res.redirect('/home_after_sign_in.html')
-  
-    
+    return env.res.redirect('/home_after_sign_in.html')   
     }
   }
-
-
  };
