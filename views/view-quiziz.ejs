@@ -181,33 +181,40 @@ const puppeteer = require('puppeteer');
         return pdf;
     }
 	
-	// async function sendmail()
-	// {
-	// console.log(env.req.body.category)
-    // var category = env.req.body.category
-    // console.log("---Session---")
-    // console.log(env.req.cookies['user'])
-    // var user_id = 0
-    // if (env.req.cookies['user']) {
-    // const user = await User.findOne({ email: env.req.cookies['user']})
-    // console.log(user.email)
-    // email1=user.email
-    // console.log("before email")
-    // console.log(email1)
-    //  const email = {
-    //   to: email1,
-    //   subject: "Approval of videos",
-    //   template: "vid_approved",
-      
-    //  };
-    //  console.log(email)
-    //  await sails.helpers.sendMail(email);
-    //   console.log("email approved sent ");
-    // }
+	async function sendmail()
+	{
+	console.log(env.req.body.category)
+    var category = env.req.body.category
+    console.log("---Session---")
+    console.log(env.req.cookies['user'])
+    var user_id = 0
+    if (env.req.cookies['user']) {
+    const user = await User.findOne({ email: env.req.cookies['user']})
+	const name= await User.findOne({fullName:env.req.cookies['user']})
+    console.log(user.email)
+    email1=user.email
+    console.log("before email")
+	output=window.print()
+    console.log(email1)
 
-	// }
+     const email = {
+      to: email1,
+      subject: "Approval of videos",
+      template: quiz_report,
+	  context: {
+   		name: name,
+   		display: output,
+ 	},
+     };
+     console.log(email)
+     await sails.helpers.sendMail(email);
+      console.log("email approved sent ");
+    }
+
+	}
 		
 	</script>
 	<button type="submit" onclick="checkAnswers()">Evaluate</button> 
 	<!-- window.print() is the old notation for  -->
 	<button id="submit" onclick="window.print();">Print Quiz</button>
+	<button id="submit" onclick="sendmail()"> Send Email of report</button>
