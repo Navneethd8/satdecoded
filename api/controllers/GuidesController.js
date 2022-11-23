@@ -37,6 +37,7 @@
        upload: async function  (req, res) {
          console.log("BEgin"),
         category = req.body.category
+        console.log(req.body.category)
         console.log("---Session---")
         console.log(req.cookies['user'])
         var user_id = 0
@@ -66,12 +67,11 @@
                fd=str.substring(str.lastIndexOf("\\")+1);
                console.log("file upload success",fd);
                
-               category=uploadedFiles[0].category;
                console.log(category);
                let filecontrol = await Guides.create({
                  fd:fd,
                  filename:uploadedFiles[0].filename,
-                 category:category,
+                 category:'Maths:Heart of Algebra',
                  userid_upload:user_id,
                  filetype:uploadedFiles[0].type,
                  size:uploadedFiles[0].size
@@ -83,7 +83,7 @@
                // console.log(email)
                // user_email(email);
                 // Window.alert("Your Video has been sent for approval.Once approved it will be displayed on the website")
-               return res.redirect('/index.html');
+               return res.redirect('/admin_after_sign_in.html');
              }
            
            });  

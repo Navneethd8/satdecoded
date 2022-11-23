@@ -21,7 +21,7 @@ module.exports = {
     category:
     {
       type:'string',
-      required:true,
+      required:false,
     },
     userid_upload:
     {
