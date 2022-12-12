@@ -30,7 +30,7 @@ module.exports = {
         res.end(
         '<form action="http://localhost:1337/file/upload" enctype="multipart/form-data" method="post">'+
         '<input type="text" name="title"><br>'+
-	'<input list="category" name="category" id="category">'+
+	      '<input list="category" name="category" id="category">'+
         '<datalist id="category">'
         +'<option value="Heart of Algebra">'+
         '<option value="Passport to advanced mathematics">' +
