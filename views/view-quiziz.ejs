@@ -1,6 +1,4 @@
-<script>
-const puppeteer = require('puppeteer');
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 <style>
 	body {
 	  font-family: "Lato", sans-serif;
@@ -159,57 +157,50 @@ const puppeteer = require('puppeteer');
 		<script>
 		
 	async function generatePDF() {
-		url=""//TODO:URL NEEDS TO BE DONE
-        const browser = await puppeteer.launch({ headless: true }); // Puppeteer can only generate pdf in headless mode.
-        const page = await browser.newPage();
-        await page.goto(url, { waitUntil: 'networkidle', networkIdleTimeout: 5000 }); // Adjust network idle as required. 
-        const pdfConfig = {
-            format: 'A4',
-            printBackground: true,
-            margin: { // Word's default A4 margins
-                top: '2.54cm',
-                bottom: '2.54cm',
-                left: '2.54cm',
-                right: '2.54cm'
-            }
-        };
-        await page.emulateMedia('screen');
-        const pdf = await page.pdf(pdfConfig); // Return the pdf buffer. Useful for saving the file not to disk. 
+		// url=""//TODO:URL NEEDS TO BE DONE
+        // const browser = await puppeteer.launch({ headless: true }); // Puppeteer can only generate pdf in headless mode.
+        // const page = await browser.newPage();
+        // await page.goto(url, { waitUntil: 'networkidle', networkIdleTimeout: 5000 }); // Adjust network idle as required. 
+        // const pdfConfig = {
+        //     format: 'A4',
+        //     printBackground: true,
+        //     margin: { // Word's default A4 margins
+        //         top: '2.54cm',
+        //         bottom: '2.54cm',
+        //         left: '2.54cm',
+        //         right: '2.54cm'
+        //     }
+        // };
+        // await page.emulateMedia('screen');
+        // const pdf = await page.pdf(pdfConfig); // Return the pdf buffer. Useful for saving the file not to disk. 
 
-        await browser.close();
+        // await browser.close();
 
-        return pdf;
+        // return pdf;
     }
 	
-	async function sendmail()
+	async function sendReport()
 	{
-	console.log(env.req.body.category)
-    var category = env.req.body.category
-    console.log("---Session---")
-    console.log(env.req.cookies['user'])
-    var user_id = 0
-    if (env.req.cookies['user']) {
-    const user = await User.findOne({ email: env.req.cookies['user']})
-	const name= await User.findOne({fullName:env.req.cookies['user']})
-    console.log(user.email)
-    email1=user.email
-    console.log("before email")
-	output=window.print()
-    console.log(email1)
+		console.log("sendReport");
+		var pdf = new jsPDF('p', 'pt', 'letter');
+		pdf.canvas.height = 72 * 11;
+		pdf.canvas.width = 72 * 8.5;
 
-     const email = {
-      to: email1,
-      subject: "Approval of videos",
-      template: quiz_report,
-	  context: {
-   		name: name,
-   		display: output,
- 	},
-     };
-     console.log(email)
-     await sails.helpers.sendMail(email);
-      console.log("email approved sent ");
-    }
+		pdf.addHTML(document.getElementsByClassName('panel'), 15, 15, {
+    		  'background': '#fff',
+    	}, async function() {
+	      // pdf.save('quiz_report.pdf');
+     		let formData = new FormData(); 
+			var blob = pdf.output('blob');
+			formData.append('file', blob, 'report.pdf');
+			console.log(formData)
+			await fetch('/sendreport/upload', {
+				method: "POST", 
+				body: formData,
+				data: formData,
+			});
+
+    	});
 
 	}
 		
@@ -217,4 +208,4 @@ const puppeteer = require('puppeteer');
 	<button type="submit" onclick="checkAnswers()">Evaluate</button> 
 	<!-- window.print() is the old notation for  -->
 	<button id="submit" onclick="window.print();">Print Quiz</button>
-	<button id="submit" onclick="sendmail()"> Send Email of report</button>
+	<button id="submit" onclick="sendReport()"> Send Email of report</button>
