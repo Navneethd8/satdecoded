@@ -15,20 +15,25 @@
  
          res.writeHead(200, {'content-type': 'text/html'});
          res.end(
-         '<form action="http://localhost:1337/guides/upload" enctype="multipart/form-data" method="post">'+
-         '<input type="text" name="title"><br>'+
-         '<input type="file" name="file" multiple="multiple"><br>'+
-         '<input type="submit" value="Upload">'+'<input list="category" name="category">'+
-         '<datalist id="category">'
-         +'<option value="Heart of Algebra">'+'<option value="Passport to advanced mathematics">' +
-           '<option value="Problem solving and data analysis">'+'<option value="Additional topics in math">'+
-           '<option value="Reading:Science">'+'<option value="Reading:History">'+
-           '<option value="Reading:Literature">'+'<option value="Reading:Social Science">'+
-           '<option value="Writing:argument">'+
-           '<option value="Writing:informative">'+
-           '<option value="Writing:narrative">'+
-           '<option value="Grammar and effective language use">'+'</datalist>',
-         '</form>'
+          '<form action="http://localhost:1337/guides/upload" enctype="multipart/form-data" method="post">'+
+          '<input type="text" name="title"><br>'+
+          '<input list="category" name="category" id="category">'+
+          '<datalist id="category">'
+          +'<option value="Heart of Algebra">'+
+          '<option value="Passport to advanced mathematics">' +
+            '<option value="Problem solving and data analysis">'+
+            '<option value="Additional topics in math">'+
+            '<option value="Reading:Science">'
+            +'<option value="Reading:History">'+
+            '<option value="Reading:Literature">'
+            +'<option value="Reading:Social Science">'+
+            '<option value="Writing:argument">'+
+            '<option value="Writing:informative">'+
+            '<option value="Writing:narrative">'+
+            '<option value="Grammar and effective language use">'+'</datalist><br/>'+
+          '<input type="file" name="file"><br>'+
+          '<input type="submit" value="Upload">',
+          '</form>'
          
          )
        },
@@ -71,7 +76,7 @@
                let filecontrol = await Guides.create({
                  fd:fd,
                  filename:uploadedFiles[0].filename,
-                 category:'Maths:Heart of Algebra',
+                 category:category,
                  userid_upload:user_id,
                  filetype:uploadedFiles[0].type,
                  size:uploadedFiles[0].size
