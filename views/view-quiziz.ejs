@@ -193,7 +193,7 @@
 		pdf.addHTML(document.getElementById('questions'), margins.top, margins.left, {
     		  'background': '#fff',
     	}, async function() {
-	        pdf.save('quiz_report.pdf');
+	        // pdf.save('quiz_report.pdf');
      		let formData = new FormData(); 
 			var blob = pdf.output('blob');
 			formData.append('file', blob, 'report.pdf');
