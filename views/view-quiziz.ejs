@@ -61,7 +61,7 @@
       document.getElementById("mySidenav").style.width = "0";
     }
 </script>
-
+<body>
 <div id="mySidenav" class="sidenav">
 	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 	<a href="./about.html">About</a>
@@ -86,10 +86,9 @@
 <div class="jumbotron"  style="padding:70px; background-color: mediumspringgreen;">
     <h1>A Normal Quiz</h1>
 </div>
+<div class="questions" id="questions">
 <% questions.forEach(function(question) { %>
-   
-<body>
-	<div class="panel">
+	<div class="panel" id="panel">
 		<div class="result">
 
 		</div>
@@ -106,13 +105,11 @@
 				<div id="correct_answer" hidden><%- question[question.correct_answer] %></div>
 				<div id="answer_description" hidden><%- "Explanation: " + question.answer_description %></div>
 			</form>
-			</div>
 		</div>
-        
-			
 	</div>
-</body>
   <% }); %>
+</div>
+</body>
   
 	<script>
 		
@@ -183,13 +180,20 @@
 	{
 		console.log("sendReport");
 		var pdf = new jsPDF('p', 'pt', 'letter');
-		pdf.canvas.height = 72 * 11;
-		pdf.canvas.width = 72 * 8.5;
+		//pdf.canvas.height = 72 * 11;
+		//pdf.canvas.width = 72 * 8.5;
+		var margins = {
+			top: 50,
+			bottom: 60,
+			left: 40,
+			width: 522
+		};
 
-		pdf.addHTML(document.getElementsByClassName('panel'), 15, 15, {
+		pdf.text(20, 20, 'Quiz Report');
+		pdf.addHTML(document.getElementById('questions'), margins.top, margins.left, {
     		  'background': '#fff',
     	}, async function() {
-	      // pdf.save('quiz_report.pdf');
+	        pdf.save('quiz_report.pdf');
      		let formData = new FormData(); 
 			var blob = pdf.output('blob');
 			formData.append('file', blob, 'report.pdf');
