@@ -56,12 +56,13 @@ module.exports = {
                     attachments: [ 
                         {
                             filename: uploadedFiles[0].filename,
-                            path: fd,
+                            path: "assets/reports/"+fd,
                             cid: 'quiz_report.pdf'
                         }
                     ]
                 };
                 await sails.helpers.sendMail(email);
+                console.log("Success")
 
         }
         
