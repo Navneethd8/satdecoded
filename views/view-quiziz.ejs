@@ -196,7 +196,7 @@
 
 		let page = document.getElementById('questions');
 
-		html2PDF(page, {
+		var pdf = await html2PDF(page, {
 			jsPDF: {
 				format: 'a4',
 			},
@@ -205,8 +205,21 @@
 				scrollY: -window.scrollY,
   			},
 			imageType: 'image/jpeg',
-			output: 'quiz_report.pdf'
+			output: 'quiz_report.pdf',
+			success: function(pdf) {
+    			console.log(pdf.output('blob'));
+				let formData = new FormData(); 
+				formData.append('file', pdf.output('blob'), 'quiz_report.pdf');
+				console.log(formData)
+				fetch('/sendreport/upload', {
+					method: "POST", 
+					body: formData,
+					data: formData,
+				});
+  			}
 		});
+
+
 
 	}
 		
