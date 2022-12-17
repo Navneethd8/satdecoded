@@ -44,7 +44,12 @@ module.exports = {
    });
    console.log(" before email=approved");
    console.log(inputs)
-   //const user = await User.findOne({ id: inputs.user_id});
+   let user_id,user_email;
+   if (req.cookies['user']) {
+    const user = await User.findOne({ email: req.cookies['user']})
+    user_id=user.id;
+    user_email=user.email;
+  }
 
   //  console.log(user.email)
   //  if (!user) {
@@ -60,15 +65,14 @@ module.exports = {
     //  await sails.helpers.sendMail(email);
     //   console.log("email approved sent ");
      // return env.res.redirect("/video_detail_page.html")
-
     }
+
     catch{
       return env.res.redirect("error_somethingwentwrong.html")
 
     }
     
 
-    // All done.
     return;
 
   }

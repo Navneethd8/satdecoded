@@ -99,10 +99,12 @@
 
 
 		<td>
-			<form action=<%= "/app\?question_id\=" + diff.id + "\&user_id\=2"  %> method ='post'>			
+			<form action=<%= "/app\?question_id\=" + diff.id + "\&user_id\=" + user_id  %> method ='post'>			
 				<button type="submit" value="Submit">Approve</button>
 			</form>
+
 		</td>
+		
 	 </tr> 
   
 	<% }); %>

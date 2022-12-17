@@ -112,10 +112,16 @@ function closeNav() {
 		<td><%- video.category %></td> 
 		<td><%- video.userid_upload %></td> 
 		<td>
-			<form action=<%= "/action-2\?video_id\=" + video.id + "\&user_id\=2"  %> method ='post'>			
+			<form action=<%= "/action-2\?video_id\=" + video.id + "\&user_id\=" + user_id  %> method ='post'>			
 				<button type="submit" value="Submit">Approve</button>
 			</form>
+     
 		</td>
+    <td>
+      <form action=<%= "/deny\?video_id\=" + video.id + "\&user_id\=" + user_id  %> method ='post'>			
+      <button type="submit" value="Submit">Deny</button>
+      </form>
+    </td>
 	 </tr> 
   
 	<% }); %>

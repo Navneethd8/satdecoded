@@ -37,17 +37,17 @@ module.exports = {
     console.log(env.req.cookies['user'])
     var user_id = 0
     if (env.req.cookies['user']) {
-    const user = await User.findOne({ email: env.req.cookies['user']})
-    console.log(user.email)
-    email1=user.email
-    console.log(user.id)
-    user_id = user.id
-    console.log(user_id)
+      const user = await User.findOne({ email: env.req.cookies['user']})
+      console.log(user.email)
+      email1=user.email
+      console.log(user.id)
+      user_id = user.id
+      console.log(user_id)
     }
     console.log(inputs.video_id)
     try{
       console.log('entering approve function')
-    const video = await Videos.findOne({ id: inputs.video_id });
+      const video = await Videos.findOne({ id: inputs.video_id });
       console.log(video);
       if (!video) {
         console.log("video not found")
