@@ -50,16 +50,7 @@
 	  .sidenav a {font-size: 36px;}
 	}
 	</style>
-  
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<script>
+  <script>
     function openNav() {
       document.getElementById("mySidenav").style.width = "250px";
     }
@@ -68,7 +59,12 @@
       document.getElementById("mySidenav").style.width = "0";
     }
 </script>
-<body>
+<div class="container">
+	<a class="navbar-brand"><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span></a>
+	<ul class="nav navbar-nav">
+	  <li><a href="/home_after_sign_in.html">SAT Decoded</a></li>
+	</ul>
+  </div>
 <div id="mySidenav" class="sidenav">
 	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 	<a href="./about.html">About</a>
@@ -82,17 +78,17 @@
 	<a href="./difficult_questions.html">Upload Difficult Questions!</a> 
 	<a href="./home_after_sign_in.html">Back to Home</a>
   </div>
-<!-- <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %> -->
-<div class="container">
-	<a class="navbar-brand"><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span></a>
-		<!--<a class="navbar-brand" href="/">SAT Decoded</a> -->
-	<ul class="nav navbar-nav">
-	  <li><a href="/home_after_sign_in.html">SAT Decoded</a></li>
-	</ul>
-  </div>
 <div class="jumbotron"  style="padding:70px; background-color: mediumspringgreen;">
     <h1>A Normal Quiz</h1>
 </div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <div class="questions" id="questions" style="width: 595.28px;color: black;background: white;">
 	<h3>
 		Quiz for <%= (questions.length > 0)? questions[0].category : "SAT Decoded"%>
@@ -102,10 +98,10 @@
 		<div class="result">
 
 		</div>
-		<div class="question-container" id="question">
+		<div class="question-container" id="question" style="padding-left: 15px;">
 			<%- question.qn %>
 		</div>
-		<div class="option-container" id="answers-container">
+		<div class="option-container" id="answers-container" style="padding: 15px;">
 			<form name=<%- question.correct_answer %> id= <%- '"' + question.id + '"' %> >
 				<input type="radio" name=<%- question.id %> id=<%- question.id + '1"' %> value = <%-JSON.stringify(question.answer1)%>> <%- question.answer1 %></input><br/>
 				<input type="radio" name=<%- question.id %> id=<%- question.id + '2"' %> value = <%-JSON.stringify(question.answer2)%>> <%- question.answer2 %></input><br/>
@@ -120,8 +116,8 @@
   <% }); %>
 </div>
 <button type="submit" onclick="checkAnswers()">Evaluate</button> 
-<!-- window.print() is the old notation for  -->
 <button id="submit" onclick="window.print();">Print Quiz</button>
+<button id="submit" onclick="printReport();">Download Quiz</button>
 <button id="submit" onclick="sendReport()"> Send Email of report</button>
 </body>
   
@@ -164,32 +160,7 @@
 		  console.log('END check answer')
 		
 		};
-		</script>
-		<script>
-		
-	async function generatePDF() {
-		// url=""//TODO:URL NEEDS TO BE DONE
-        // const browser = await puppeteer.launch({ headless: true }); // Puppeteer can only generate pdf in headless mode.
-        // const page = await browser.newPage();
-        // await page.goto(url, { waitUntil: 'networkidle', networkIdleTimeout: 5000 }); // Adjust network idle as required. 
-        // const pdfConfig = {
-        //     format: 'A4',
-        //     printBackground: true,
-        //     margin: { // Word's default A4 margins
-        //         top: '2.54cm',
-        //         bottom: '2.54cm',
-        //         left: '2.54cm',
-        //         right: '2.54cm'
-        //     }
-        // };
-        // await page.emulateMedia('screen');
-        // const pdf = await page.pdf(pdfConfig); // Return the pdf buffer. Useful for saving the file not to disk. 
-
-        // await browser.close();
-
-        // return pdf;
-    }
-	
+			
 	async function sendReport()
 	{
 		console.log("sendReport");
@@ -221,6 +192,23 @@
 
 
 
+	}
+	async function printReport()
+	{
+		
+		let page = document.getElementById('questions');
+
+		var pdf = await html2PDF(page, {
+			jsPDF: {
+				format: 'a4',
+			},
+			html2canvas: {
+				scrollX: 0,
+				scrollY: -window.scrollY,
+  			},
+			imageType: 'image/jpeg',
+			output: 'quiz_report.pdf',
+		});
 	}
 		
 	</script>

@@ -1,5 +1,9 @@
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.7/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf-html2canvas@latest/dist/jspdf-html2canvas.min.js"></script>
+
 <style>
-	body {
+body {
 	  font-family: "Lato", sans-serif;
 	}
 	
@@ -36,6 +40,10 @@
 	  font-size: 36px;
 	  margin-left: 50px;
 	}
+
+	#questions {
+		background-color: #fff;
+	}
 	
 	@media screen and (max-height: 450px) {
 	  .sidenav {padding-top: 30px;}
@@ -53,7 +61,6 @@
 	</script>
   <div class="container">
 	<a class="navbar-brand"><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span></a>
-	  <!--<a class="navbar-brand" href="/">SAT Decoded</a> -->
 	<ul class="nav navbar-nav">
 	  <li><a href="/home_after_sign_in.html">SAT Decoded</a></li>
 	</ul>
@@ -82,18 +89,19 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<!-- <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %> -->
+<div class="questions" id="questions" style="width: 595.28px;color: black;background: white;">
+	<h3>
+		Quiz for <%= (questions.length > 0)? questions[0].category : "SAT Decoded"%>
+	</h3>
 <% questions.forEach(function(question) { %>
-   
-<body>
-	<div class="panel">
+	<div class="panel" id="panel">
 		<div class="result">
 
 		</div>
-		<div class="question-container" id="question">
+		<div class="question-container" id="question" style="padding-left: 15px;">
 			<%- question.qn %>
 		</div>
-		<div class="option-container" id="answers-container">
+		<div class="option-container" id="answers-container" style="padding: 15px;">
 			<form name=<%- question.correct_answer %> id= <%- '"' + question.id + '"' %> >
 				<input type="radio" name=<%- question.id %> id=<%- question.id + '1"' %> value = <%-JSON.stringify(question.answer1)%>> <%- question.answer1 %></input><br/>
 				<input type="radio" name=<%- question.id %> id=<%- question.id + '2"' %> value = <%-JSON.stringify(question.answer2)%>> <%- question.answer2 %></input><br/>
@@ -103,14 +111,16 @@
 				<div id="correct_answer" hidden><%- question[question.correct_answer] %></div>
 				<div id="answer_description" hidden><%- "Explanation: " + question.answer_description %></div>
 			</form>
-			</div>
-		</div>
-        
-			
+		</div>		
 	</div>
-</body>
   <% }); %>
-  
+</div>
+<button type="submit" onclick="checkAnswers()">Evaluate</button> 
+<button id="submit" onclick="window.print();">Print Quiz</button>
+<button id="submit" onclick="printReport();">Download Quiz</button>
+<button id="submit" onclick="sendReport()"> Send Email of report</button>
+</body>
+
 	<script>
 		
 	function checkAnswers() 
@@ -127,9 +137,12 @@
 			var answer_status
 			var answer_description
 			for (var k=0; k < children.length; k++) {
-				if (children[k].id === "correct_answer") correct_answer = children[k].innerHTML;
-				if (children[k].id === "answer_description") answer_description = children[k];
-				if (children[k].id === "answer_status") answer_status = children[k];
+				if (children[k].id === "correct_answer")
+				correct_answer = children[k].innerHTML;
+				if (children[k].id === "answer_description")
+				answer_description = children[k];
+				if (children[k].id === "answer_status") 
+				answer_status = children[k];
 			}
 			answer_status.innerHTML = "Incorrect Answer"	
 			var incorrect = true
@@ -147,7 +160,56 @@
 		  console.log('END check answer')
 		
 		};
+		
+	async function sendReport()
+	{
+		console.log("sendReport");
+
+		let page = document.getElementById('questions');
+
+		var pdf = await html2PDF(page, {
+			jsPDF: {
+				format: 'a4',
+			},
+			html2canvas: {
+				scrollX: 0,
+				scrollY: -window.scrollY,
+  			},
+			imageType: 'image/jpeg',
+			output: 'quiz_report.pdf',
+			success: function(pdf) {
+    			console.log(pdf.output('blob'));
+				let formData = new FormData(); 
+				formData.append('file', pdf.output('blob'), 'quiz_report.pdf');
+				console.log(formData)
+				fetch('/sendreport/upload', {
+					method: "POST", 
+					body: formData,
+					data: formData,
+				});
+  			}
+		});
+
+
+
+	}
+	async function printReport()
+	{
+		
+		let page = document.getElementById('questions');
+
+		var pdf = await html2PDF(page, {
+			jsPDF: {
+				format: 'a4',
+			},
+			html2canvas: {
+				scrollX: 0,
+				scrollY: -window.scrollY,
+  			},
+			imageType: 'image/jpeg',
+			output: 'quiz_report.pdf',
+		});
+	}
+
 		</script>
 		
-	<button type="submit" onclick="checkAnswers()">Evaluate</button> 
-	<button id="submit" onclick="window.print()">Print Quiz</button> 
