@@ -83,7 +83,6 @@ module.exports.routes = {
   'GET /videos/view': { action: 'videos/view-view' },
   'GET /videos/upload': { action: 'videos/view-upload' },
   'GET /videos/approve': { action: 'videos/view-approve' },
-  'POST /api/v1/videos/deny': { action: 'videos/deny' },
   'GET /videos/approve_multiple': { action: 'videos/view-approve-multiple' },
 
   'POST /videos/send': { action: 'videos/send' },
