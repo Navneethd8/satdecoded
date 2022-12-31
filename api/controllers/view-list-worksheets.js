@@ -26,9 +26,7 @@ module.exports = {
    fn: async function (inputs,exits,env) {
     console.log(env)
     console.log({category:inputs.category})
-    category= 'Maths:Heart of Algebra'
-    console.log(category)
-    var guides= await Guides.find({category: category});
+    var guides= await Guides.find({category: inputs.category});
 
     console.log("displaying worksheets")
     return env.res.view({guides:guides});  

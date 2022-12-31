@@ -106,7 +106,6 @@
  <body>
  <h2>Please choose your file and Click upload.</h2>
   <form action="/guides/upload" enctype="multipart/form-data" method="post">
-    <input type="file" name="file">
     <input list="category" name="category">
   <datalist id="category">
     <option value="Maths:Heart of Algebra">
@@ -123,6 +122,7 @@
     <option value="Writing:Grammar and effective language use">
 
   </datalist>
+  <input type="file" name="file">
   <input type="submit">
     
 
