@@ -63,8 +63,34 @@ module.exports.routes = {
   'POST  /api/v1/deliver-contact-form-message':          { action: 'deliver-contact-form-message' },
   'POST  /api/v1/observe-my-session':                 { action: 'observe-my-session', hasSocketFeatures: true },
 
-  //
   //CUSTOM ROUTES
-  //
+  //text based pages
   'GET /about': { action: 'view-about' },
+  //Admin
+  'GET /admin/index': { action: 'admin/view-index' },
+  'GET /admin/list': { action: 'admin/view-list' },
+  //Quiz
+  'GET /quizzes/index': { action: 'quizzes/view-index' },
+  'GET /quizzes/approve_difficult': { action: 'quizzes/view-approve-difficult' },
+  'GET /quizzes/upload_difficult': { action: 'quizzes/view-upload-difficult' },
+  'GET /quizzes/generate_difficult': { action: 'quizzes/view-generate-difficult' },
+  'GET /quizzes/generate': { action: 'quizzes/view-generate' },
+  'GET /quizzes/upload': { action: 'quizzes/view-upload' },
+  'GET /quizzes/list': { action: 'quizzes/view-list' },
+
+  //Videos
+  'GET /videos/index': { action: 'videos/view-index' },
+  'GET /videos/view': { action: 'videos/view-view' },
+  'GET /videos/upload': { action: 'videos/view-upload' },
+  'GET /videos/approve': { action: 'videos/view-approve' },
+  'POST /api/v1/videos/deny': { action: 'videos/deny' },
+  'GET /videos/approve_multiple': { action: 'videos/view-approve-multiple' },
+
+  'POST /videos/send': { action: 'videos/send' },
+
+  //Worksheets
+  'GET /worksheets/index': { action: 'worksheets/view-index' },
+  'GET /worksheets/view': { action: 'worksheets/view-view' },
+  'GET /worksheets/upload': { action: 'worksheets/view-upload' },
+
 };
