@@ -32,8 +32,8 @@ module.exports = {
       admin = user.admin
   }
 
-    if (admin) {
-      console.log({category:inputs.category})
+    
+    console.log({category:inputs.category})
       category= inputs.category
       console.log(category)
       var questions= await Questions.find({category: category});
@@ -41,12 +41,6 @@ module.exports = {
       console.log(questions);
       console.log("displaying questions")
       return env.res.view({questions: questions});  
-    }
-    else
-    {
-      // Return empty array if the user is not an admin
-      return env.res.view({questions: []});  
-    }
   }
 
 
