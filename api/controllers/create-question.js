@@ -72,7 +72,7 @@ module.exports = {
        correct_answer:inputs.correct_answer,
        answer_description:inputs.answer_description,
       }).fetch();
-    return env.res.redirect("/admin_after_sign_in.html")
+    return env.res.redirect("/subpages/admin/admin_after_sign_in.html")
    
   }
 

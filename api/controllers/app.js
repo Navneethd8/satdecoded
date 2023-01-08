@@ -36,7 +36,7 @@ module.exports = {
       console.log(diffi);
       if (!diffi) {
         console.log("video not found")
-        return exits.question_not_found({error: `Question was not found`,}), env.res.redirect('/error_somethingwentwrong.html')
+        return exits.question_not_found({error: `Question was not found`,}), env.res.redirect('/archives/error_somethingwentwrong.html')
      }
      console.log("set videos");
      await Difficult.update({ id: diffi.id }).set({
@@ -53,7 +53,7 @@ module.exports = {
 
   //  console.log(user.email)
   //  if (!user) {
-    return env.res.redirect('/generate_difficult_quiz.html')
+    return env.res.redirect('/subpages/quiz/generate_difficult_quiz.html')
  //};
     //  const email = {
     //   to: user.email,
@@ -68,7 +68,7 @@ module.exports = {
     }
 
     catch{
-      return env.res.redirect("error_somethingwentwrong.html")
+      return env.res.redirect("/archives/error_somethingwentwrong.html")
 
     }
     

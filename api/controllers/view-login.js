@@ -48,7 +48,7 @@ module.exports = {
       const user = await User.findOne({ email: inputs.email });
       console.log(user)
       if (!user) {
-        return env.res.redirect('/usernotfound')
+        window.alert("User not found")
      }
      console.log("before password")
      await sails.helpers.passwords.checkPassword(inputs.password, user.password)
@@ -72,11 +72,11 @@ console.log('printing session')
 console.log(env.req.session)
 if (inputs.email== 'satdecoded5@gmail.com')
 {
-  return env.res.redirect('/admin_after_sign_in.html')
+  return env.res.redirect('/subpages/admin/admin_after_sign_in.html')
 }
 else
 {
-  return env.res.redirect('/home_after_sign_in.html')
+  return env.res.redirect('/subpages/general/home_after_sign_in.html')
 }
   
     }
@@ -87,12 +87,12 @@ else
         //   message: `Error logging in user ${inputs.email}`,
         //   error: error.raw,
         // });
-        return env.res.redirect('/errorlogin.html')
+        return env.res.redirect("/archives/errorlogin.html")
       }
       // return exits.error({
       //   message: `Error logging in user ${inputs.email}`,
       //   error: error.message,
-        return env.res.redirect('/errorlogin.html')
+      return env.res.redirect("/archives/error_somethingwentwrong")
  // });
     }
 

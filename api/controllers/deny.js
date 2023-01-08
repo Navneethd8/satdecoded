@@ -47,7 +47,7 @@ module.exports = {
       console.log(video);
       if (!video) {
         console.log("video not found")
-        return env.res.redirect("/error_somethingwentwrong.html")
+        return env.res.redirect("/archives/error_somethingwentwrong.html")
      }
      console.log("set videos");
      await Videos.destroyOne({ id: video.id });

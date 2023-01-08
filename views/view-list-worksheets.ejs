@@ -1,101 +1,205 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-	body {
-	  font-family: "Lato", sans-serif;
-	}
-	
-	.sidenav {
-	  height: 100%;
-	  width: 0;
-	  position: fixed;
-	  z-index: 1;
-	  top: 0;
-	  left: 0;
-	  background-color: rgb(52, 52, 52);
-	  overflow-x: hidden;
-	  transition: 0.5s;
-	  padding-top: 60px;
-	}
-	
-	.sidenav a {
-	  padding: 8px 8px 8px 32px;
-	  text-decoration: none;
-	  font-size: 25px;
-	  color: rgb(255,0,0);
-	  display: block;
-	  transition: 0.3s;
-	}
-	
-	.sidenav a:hover {
-	  color: #f1f1f1;
-	}
-	
-	.sidenav .closebtn {
-	  position: absolute;
-	  top: 0;
-	  right: 25px;
-	  font-size: 36px;
-	  margin-left: 50px;
-	}
-	
-	@media screen and (max-height: 450px) {
-	  .sidenav {padding-top: 30px;}
-	  .sidenav a {font-size: 36px;}
-	}
-	</style>
-<div id="mySidenav" class="sidenav">
-	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	<a href="./about.html">About</a>
-	<a href="./list_syllabus.html">Syllabus</a>
-	<a href="/list_videos">View Videos</a>
-	<a href="./video_upload.html">Upload a video</a>
-	<a href="./worksheets_view.html">View Worksheets</a>
-	<a href="./faq.html">FAQ</a>
-	<a href="./formquiz.html">Generate Quiz</a>
-	<a href="./generate_difficult_quiz.html">Generate Quiz of Difficult Questions</a>
-	<a href="./difficult_questions.html">Upload Difficult Questions!</a> 
-	<a href="./home_after_sign_in.html">Back to Home</a>
-</div>
-  <script>
-    function openNav() {
-      document.getElementById("mySidenav").style.width = "250px";
-    }
-    
-    function closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
-    }
-    </script>
-	<div class="container">
-		<a class="navbar-brand"><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span></a>
-			<!--<a class="navbar-brand" href="/">SAT Decoded</a> -->
-		<ul class="nav navbar-nav">
-		  <li><a href="/home_after_sign_in.html">SAT Decoded</a></li>
-		</ul>
-	  </div>
-<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
-<div class="jumbotron"  style="padding:70px; background-color: mediumspringgreen;">
-    <h1>List Worksheets</h1>
-</div>
-<table class='table table-hover table-condensed'>
-	
-	<% guides.forEach(function(guide) { %>
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<tr>
-		<td>
-			<a class="fa fa-download" role="button" href=<%- "\\Worksheets\\" + guide.fd %> download=<%- "\\Worksheets\\" + guide.fd %>> Download </a>
-			<!-- <button class="btn" type="submit" onclick=""><i class="fa fa-download">></i> Download</button> -->
-			<!-- <embed src=<%- "\\Worksheets\\" + guide.fd %> width="800px" height="2100px" /> -->
-				<!-- <button type="submit" onclick="window.open('file.doc')">Download!</button> -->
+	<title>List worksheets and notes</title>
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="/css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<!-- Template.css -->
+	<link rel="stylesheet" href="/css/template.css">
 
-			<!-- <button src=></button> -->
-		</td>
-		<td><%- guide.filename %></td>
-		<td><%- guide.category %></td> 
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="/css/magnific-popup.css">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="/css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	<body>
 		
-	 </tr>
-  
-	<% }); %>
+	<div class="fh5co-loader"></div>
 	
-</table>
-  
-     
+	<div id="page">
+	<nav class="fh5co-nav" role="navigation">
+		<div class="top">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 text-right">
+						<ul class="fh5co-social">
+							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-dribbble"></i></a></li>
+							<li><a href="#"><i class="icon-github"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="top-menu">
+			
+			<div class="container">
+				<!-- <a class="navbar-brand"><span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span></a> -->
+
+				<div class="row">
+					<div class="col-xs-1">
+						<a href="/subpages/general/home_after_sign_in.html">
+							<img src="/Free_Sample_By_Wix.jpg" style="width: 120%;">
+						</a>					
+					</div>							
+					<div class="col-xs-11 text-right menu-1">
+						<ul>
+							<li class="active"><a href="/subpages/general/home_after_sign_in.html">Home</a></li>
+							<li class="has-dropdown">
+                                <a>
+                                    General Information
+                                </a>
+                                <ul class="dropdown">
+									<li><a href="/subpages/general/user_about.html">About</a></li>
+									<li><a href="/subpages/general/user_faq.html">FAQ</a></li>
+									<li><a href="/subpages/geenral/user_syllabus.html">Syllabus</a></li>
+								</ul>
+                            </li>
+                            <li class="has-dropdown">
+								<a>Quiz</a>
+								<ul class="dropdown">
+									<li><a href="/upload_questions">Upload Difficult Questions</a></li>
+									<li><a href="/subpages/quiz/generate_quiz.html">Generate a Quiz!</a></li>
+                                    <li><a href="/subpages/quiz/generate_difficult_quiz.html">Generate a Quiz of Difficult Questions!</a></li>
+
+								</ul>
+							</li>
+                            <li class="has-dropdown">
+								<a>Videos</a>
+								<ul class="dropdown">
+									<li><a href="/subpages/videos/video_upload.html">Upload a Video</a></li>
+									<li><a href="/list_videos">View Videos</a></li>
+								</ul>
+							</li>
+							<li><a href="/subpages/worksheets/worksheets_view.html">View Notes and Worksheets</a></li>                          
+							
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</nav>
+	
+	
+
+	<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/img_bg_1.jpg);" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							View Worksheets and Notes!
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="container">
+		<div class="row animate-box">
+			<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+				<table class='table table-hover table-condensed'>
+	
+					<% guides.forEach(function(guide) { %>
+				
+						<tr>
+						<td>
+							<a class="fa fa-download" role="button" href=<%- "\\Worksheets\\" + guide.fd %> download=<%- "\\Worksheets\\" + guide.fd %>> Download </a>
+							<!-- <button class="btn" type="submit" onclick=""><i class="fa fa-download">></i> Download</button> -->
+							<!-- <embed src=<%- "\\Worksheets\\" + guide.fd %> width="800px" height="2100px" /> -->
+								<!-- <button type="submit" onclick="window.open('file.doc')">Download!</button> -->
+				
+							<!-- <button src=></button> -->
+						</td>
+						<td><%- guide.filename %></td>
+						<td><%- guide.category %></td> 
+						
+					 </tr>
+				  
+					<% }); %>
+					
+				</table>
+			</div>
+		</div>
+	</div>
+		
+
+	
+
+	<footer id="fh5co-footer" role="contentinfo">
+		<div class="container">
+			
+
+			<div class="row copyright">
+				<div class="col-md-12 text-center">
+					<p>
+						<small class="block">&copy; 2023 SAT DECODED. All Rights Reserved.</small> 
+					</p>
+					<p>
+						<ul class="fh5co-social-icons">
+							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-facebook"></i></a></li>
+							<li><a href="#"><i class="icon-linkedin"></i></a></li>
+							<li><a href="#"><i class="icon-dribbble"></i></a></li>
+						</ul>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="/js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="/js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="/js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="/js/jquery.waypoints.min.js"></script>
+	<!-- Stellar Parallax -->
+	<script src="/js/jquery.stellar.min.js"></script>
+	<!-- Carousel -->
+	<script src="/js/owl.carousel.min.js"></script>
+	<!-- countTo -->
+	<script src="/js/jquery.countTo.js"></script>
+	<!-- Magnific Popup -->
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/magnific-popup-options.js"></script>
+	<!-- Main -->
+	<script src="/js/main.js"></script>
+
+	</body>
+</html>
+

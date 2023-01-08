@@ -51,7 +51,7 @@ module.exports = {
       console.log(video);
       if (!video) {
         console.log("video not found")
-        return env.res.redirect("/error_somethingwentwrong.html")
+        return env.res.redirect("/archives/error_somethingwentwrong.html")
      }
      console.log("set videos");
      await Videos.update({ id: video.id }).set({
@@ -75,7 +75,7 @@ module.exports = {
 
     }
     catch{
-      return env.res.redirect("error_somethingwentwrong.html")
+      return env.res.redirect("/archives/error_somethingwentwrong.html")
     }
     // All done.
    },

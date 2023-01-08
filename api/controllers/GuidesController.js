@@ -88,7 +88,7 @@
                // console.log(email)
                // user_email(email);
                 // Window.alert("Your Video has been sent for approval.Once approved it will be displayed on the website")
-               return res.redirect('/admin_after_sign_in.html');
+               return res.redirect('/subpages/admin/admin_after_sign_in.html');
              }
            
            });  

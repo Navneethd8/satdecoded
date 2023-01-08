@@ -41,13 +41,13 @@ module.exports = {
     sails.log("begin")
     sails.log(inputs.token)
     if (!inputs.token) {
-      return env.res.redirect("/error_invalid_token.html")
+      return env.res.redirect("/archives/error_invalid_token.html")
     }
     else {
       var user = await User.findOne({ passwordResetToken: inputs.token });
       password=inputs.token;
       if (!user || user.passwordResetTokenExpiresAt <= Date.now()) {
-        return env.res.redirect('/error_invalid_token.html')
+        return env.res.redirect('/archives/error_invalid_token.html')
       }
       const hashedPassword = await sails.helpers.passwords.hashPassword(
         inputs.password
@@ -59,7 +59,7 @@ module.exports = {
   });
     const token = await sails.helpers.generateNewJwtToken(user.email);
     this.req.user = user;
-    return env.res.redirect('/home_after_sign_in.html')   
+    return env.res.redirect('/subpages/general/home_after_sign_in.html')   
     }
   }
  };

@@ -37,13 +37,13 @@ module.exports = {
       // return exits.invalidOrExpiredToken({
       //   error: "The provided token is expired, invalid, or already used up.",
       // });
-      return env.res.redirect('/invalidtoken.html')
+      return env.res.redirect('/archives/error_invalidtoken.html')
     }
     else
     {
     var user = await User.findOne({ emailProofToken: inputs.token });
     if (!user || user.emailProofTokenExpiresAt <= Date.now()) {
-      return env.res.redirect('/error-somethingwentwrong')
+      return env.res.redirect('/archives/error_somethingwentwrong')
       // return exits.invalidOrExpiredToken({
       //   error: "The provided token is expired, invalid, or already used up.",
       // });
@@ -58,7 +58,7 @@ module.exports = {
   // return exits.success({
   //   message: "Your account has been confirmed",
   // });
-  return env.res.redirect('/account_confirmed.html')
+  return env.res.redirect('/archives/account_confirmed.html')
 }
 
 

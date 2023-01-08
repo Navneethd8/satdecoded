@@ -1,4 +1,5 @@
 const { renameTask } = require("grunt");
+const { registerCustomQueryHandler } = require("puppeteer");
 
 module.exports = {
 
@@ -45,6 +46,8 @@ module.exports = {
 
 
   fn: async function (inputs,exits,env) {
+
+
     try{
       const newEmailAddress = inputs.email.toLowerCase();
       const token = await sails.helpers.strings.random('url-friendly');
@@ -71,11 +74,10 @@ module.exports = {
       };
 await sails.helpers.sendMail(email);
 res= env.res
-return env.res.redirect('/account_created.html')
-//// return exits.success({
-////   message: `An account has been created for ${newUser.email} successfully. Check your email to verify`,
-//// });
-
+//   return exits.success({
+//    message: `An account has been created for ${newUser.email} successfully. Check your email to verify`,
+//  });
+      return env.res.redirect("/archives/account_confirmed.html")
     }
     catch (error){
         if (error.code === 'E_UNIQUE') 
@@ -84,11 +86,13 @@ return env.res.redirect('/account_created.html')
         //   message: 'Oops :) an error occurred',
         //   error: 'This email address already exits',
         // });
-        return env.res.redirect('/error_emailalreadyexists.html')
+         // alert("email already exists");
+         return env.res.redirect("/archives/error_emailalreadyexists.html")
         }
         else
         {
-          return env.res.redirect('/error_somethingwentwrong.html')
+          return env.res.redirect("/archives/error_somethingwentwrong.html")
+          //alert("Oops :) an error occurred");
         }
 // return exits.error({
 //   message: 'Oops :) an error occurred',

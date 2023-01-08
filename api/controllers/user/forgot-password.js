@@ -33,7 +33,7 @@ module.exports = {
    try {
   var user = await User.findOne({ email: inputs.email });
   if (!user) {
-    return env.res.redirect('/somethingwentwrong.html')
+    return env.res.redirect('/archives/error_somethingwentwrong.html')
   }
   const token = await sails.helpers.strings.random("url-friendly");
   x= Date.now() + 24 * 60 * 60 * 1000;
@@ -54,13 +54,13 @@ const email = {
   console.log('before mail')
   await sails.helpers.sendMail(email);
   console.log('mail sent')
-  return env.res.redirect('/resetpwemail.html')
+  return env.res.redirect('/archives/resetpwemail.html')
 
 } 
 catch (error) {
   console.log('error')
   sails.log(error);
-  return env.res.redirect('/somethingwentwrong.html')
+  return env.res.redirect('/archives/error_somethingwentwrong.html')
 }   
   }
 };
