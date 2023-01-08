@@ -37,6 +37,11 @@
       type: 'string',
       required: true
     },
+    admin: {
+      type: 'boolean',
+      defaultsTo: false,
+      required: false
+    },
     passwordResetToken: {
       type: 'string',
       description:
