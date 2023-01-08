@@ -25,8 +25,9 @@ module.exports = {
 
   fn: async function (inputs,exits,env) {
     var admin = false
-    if (req.cookies['user']) {
-      const user = await User.findOne({ email: req.cookies['user']})
+    
+    if (env.req.cookies['user']) {
+      const user = await User.findOne({ email: env.req.cookies['user']})
       console.log(user.email)
       admin = user.admin
   }
