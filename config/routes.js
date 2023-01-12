@@ -43,4 +43,6 @@ module.exports.routes = {
     'GET /approve': { action: 'view-approve' },
     'POST /app': { action: 'app' },
     'GET /difficult_quiz': { action: 'view-difficult-quiz' },
+    'POST /deny': {action:'deny'},
+    'POST/deny_questions': {action:'deny-questions'},
 };

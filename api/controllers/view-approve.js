@@ -19,17 +19,21 @@ module.exports = {
 
 
   fn: async function (inputs,exits,env) {
-    console.log('listing videos with approved status false')
+    var user_id = 0,user
+    if (env.req.cookies['user']) {
+    const user = await User.findOne({ email: env.req.cookies['user']})
+    user_id=user.id
+    }
+    console.log('listing questions with approved status false')
     //var videos= await Videos.find();
     var diff= await Difficult.find({approved_status: false});
     console.log(diff);
-  console.log(" Listing videos not approved Success")
+  console.log(" Listing questions not approved Success")
     return env.res.view({
-      diff:diff
+      diff:diff,
+      user_id:user_id,
     });
 
-    // Respond with view.
-    return {};
 
   }
 

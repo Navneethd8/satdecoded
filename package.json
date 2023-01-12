@@ -1,7 +1,7 @@
 {
   "name": "satdecoded",
-  "private": true,
-  "version": "0.0.0",
+  "bin":"app.js",
+  "version": "1.0.0",
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
@@ -17,7 +17,7 @@
     "nodemailer-express-handlebars": "^5.0.0",
     "nodemailer-sendgrid": "^1.0.3",
     "nodemon": "^2.0.20",
-    "puppeteer": "^19.2.2",
+    "pkg": "^5.8.0",
     "sails": "^1.5.2",
     "sails-generate-scaffold": "^0.0.5",
     "sails-hook-grunt": "^5.0.0",
@@ -29,7 +29,9 @@
     "sequelize-cli": "^6.5.1",
     "underscore": "^1.13.4",
     "waterline": "^0.15.0",
-    "wkhtmltopdf": "^0.4.0"
+    "wkhtmltopdf": "^0.4.0",
+    "express": "^4.17.1"
+
   },
   "devDependencies": {
     "eslint": "5.16.0"
@@ -40,13 +42,19 @@
     "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
     "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
   },
+  "pkg": {
+    "assets": [
+        "views/**/*"
+    ],
+    "output": "dist"
+},
   "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/anonymous node/sails user/satdecoded.git"
   },
-  "author": "anonymous node/sails user",
-  "license": "",
+  "author": "Navneeth Dhamotharan",
+  "license": "ISC",
   "engines": {
     "node": "^16.16"
   }

@@ -53,20 +53,19 @@ module.exports = {
      await Videos.destroyOne({ id: video.id });
      console.log("Destroy Successful")
      
-  //  console.log(" before email=approved");
-  //  console.log(inputs)
-  //  const user = await User.findOne({ id: inputs.user_id});
-  //   console.log("before email")
-  //   console.log(email1)
-  //    const email = {
-  //     to: email1,
-  //     subject: "Approval of videos",
-  //     template: "vid_approved",
+   console.log(" before email=approved");
+   console.log(inputs)
+    console.log("before email")
+    console.log(email1)
+     const email = {
+      to: email1,
+      subject: "Approval of videos",
+      template: "video_denied",
       
-  //    };
-  //    console.log(email)
-  //    await sails.helpers.sendMail(email);
-  //     console.log("email approved sent ");
+     };
+     console.log(email)
+     await sails.helpers.sendMail(email);
+      console.log("email denied sent ");
      return env.res.redirect("/list_videos")
 
 

@@ -159,6 +159,9 @@
 				<form action=<%= "/app\?question_id\=" + diff.id + "\&user_id\=" + user_id  %> method ='post'>			
 					<button type="submit" value="Submit">Approve</button>
 				</form>
+				<form action=<%="/deny-questions\?question_id=" + diff.id +"\&user_id=" + user_id %> method='POST'>
+					<button typr="submit" value="Submit">Deny</button>
+				</form>
 	
 			</td>
 			
