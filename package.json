@@ -2,7 +2,7 @@
   "name": "satdecoded",
   "bin":"app.js",
   "version": "1.0.0",
-  "description": "a Sails application",
+  "description": "a Sails application", 
   "keywords": [],
   "dependencies": {
     "@sailshq/connect-redis": "^3.2.1",
@@ -51,7 +51,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/anonymous node/sails user/satdecoded.git"
+    "url": "https://github.com/satdecoded.git"
   },
   "author": "Navneeth Dhamotharan",
   "license": "ISC",
