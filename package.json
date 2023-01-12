@@ -57,5 +57,9 @@
   "license": "ISC",
   "engines": {
     "node": "^16.16"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
+  
 }
