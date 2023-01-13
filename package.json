@@ -1,14 +1,16 @@
 {
   "name": "satdecoded",
-  "bin":"app.js",
+  "bin": "app.js",
   "version": "1.0.0",
-  "description": "a Sails application", 
+  "description": "a Sails application",
   "keywords": [],
   "dependencies": {
     "@sailshq/connect-redis": "^3.2.1",
     "@sailshq/lodash": "^3.10.3",
     "@sailshq/socket.io-redis": "^5.2.0",
     "@sendgrid/mail": "^7.7.0",
+    "build": "^0.1.4",
+    "express": "^4.17.1",
     "grunt": "1.0.4",
     "html2pdf.js": "^0.9.0",
     "jsonwebtoken": "^8.5.1",
@@ -18,6 +20,8 @@
     "nodemailer-sendgrid": "^1.0.3",
     "nodemon": "^2.0.20",
     "pkg": "^5.8.0",
+    "puppeteer": "^19.5.2",
+    "run": "^1.4.0",
     "sails": "^1.5.2",
     "sails-generate-scaffold": "^0.0.5",
     "sails-hook-grunt": "^5.0.0",
@@ -29,25 +33,23 @@
     "sequelize-cli": "^6.5.1",
     "underscore": "^1.13.4",
     "waterline": "^0.15.0",
-    "wkhtmltopdf": "^0.4.0",
-    "express": "^4.17.1"
-
+    "wkhtmltopdf": "^0.4.0"
   },
   "devDependencies": {
     "eslint": "5.16.0"
   },
   "scripts": {
-    "start": "NODE_ENV=production node app.js",
+    "start": " node app.js --prod",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
     "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
   },
   "pkg": {
     "assets": [
-        "views/**/*"
+      "views/**/*"
     ],
     "output": "dist"
-},
+  },
   "main": "app.js",
   "repository": {
     "type": "git",
@@ -61,5 +63,4 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   }
-  
 }
